@@ -1,3 +1,4 @@
+require("dotenv").config();
 const path = require("path");
 const express = require("express");
 const mongoose = require("mongoose");
@@ -24,9 +25,7 @@ app.use(
 app.use(authRoutes);
 app.use(foodRoutes);
 
-mongoose.connect(
-"mongodb://ram:ram12345@ac-mcezez0-shard-00-00.qrqzznn.mongodb.net:27017,ac-mcezez0-shard-00-01.qrqzznn.mongodb.net:27017,ac-mcezez0-shard-00-02.qrqzznn.mongodb.net:27017/?ssl=true&replicaSet=atlas-im6pfk-shard-0&authSource=admin&appName=Cluster0"
-)
+mongoose.connect(process.env.MONGO_URI)
 .then(() => console.log("MongoDB Connected"))
 .catch(err => console.log(err));
 
