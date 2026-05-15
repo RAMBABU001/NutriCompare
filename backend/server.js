@@ -18,7 +18,7 @@ app.use(express.json());
 
 app.use(
   express.static(
-    path.join(__dirname, "../frontend")
+    path.join(process.cwd(), "../frontend")
   )
 );
 
@@ -144,13 +144,11 @@ app.post("/reset-password", async (req, res) => {
   }
 });
 
-
-
 app.use((req, res) => {
 
   res.sendFile(
     path.join(
-      __dirname,
+      process.cwd(),
       "../frontend",
       "signup.html"
     )
