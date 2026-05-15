@@ -235,6 +235,10 @@ box-shadow:
     type="text"
     id="otp"
     placeholder="Enter 4 Digit OTP"
+    maxlength="4"
+    inputmode="numeric"
+    pattern="[0-9]*"
+    oninput="this.value=this.value.replace(/[^0-9]/g,'')"
   >
 
   <button onclick="verifyOTP()">
@@ -297,9 +301,23 @@ if(!emailPattern.test(email)){
 
 
 async function verifyOTP(){
-
-  const otp =
+  
+ const otp =
     document.getElementById("otp").value;
+
+  if(otp === ""){
+
+    alert("Enter OTP");
+
+    return;
+  }
+
+  if(!/^\d{4}$/.test(otp)){
+
+    alert("OTP must contain only 4 numbers");
+
+    return;
+  }
 
   const email =
     document.getElementById("email").value;
