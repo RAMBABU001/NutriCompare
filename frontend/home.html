@@ -1,40 +1,95 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <link rel="stylesheet" href="style.css">
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title> NutriCompare</title>
+  <title> NutriCompare </title>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <style>
     body {
       font-family: "Segoe UI", Tahoma, sans-serif;
-      background: linear-gradient(135deg, #f3f4f6, #e0e7ff);
+      background: linear-gradient(180deg, #ff00ff, #00a2ff);
       margin: 0;
+      border-radius: 20px;
       padding: 0;
       min-height: 100vh;
+      height: auto;
+      background: linear-gradient(
+  90deg,
+  #ff00ff,
+  #00a2ff
+);
+
+background-size: 800% 800%;
+
+animation: flowColors 2s ease-in-out infinite;
+
+
+@keyframes flowColors{
+
+  0%{
+    background-position: 0% 50%;
+  }
+
+  50%{
+    background-position: 100% 50%;
+  }
+
+  100%{
+    background-position: 0% 50%;
+  }
+}
     }
-    nav {
-      background: linear-gradient(90deg, #2563eb, #9333ea);
-      color: white;
-      padding: 18px;
-      text-align: center;
-      font-size: 22px;
-      font-weight: bold;
-      letter-spacing: 1px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+nav{
+
+  background: linear-gradient(180deg, #ff00ff, #00a2ff);
+
+  color: white;
+
+   width:1400px;
+
+  margin:auto; 
+
+  padding: 20px;
+
+  text-align: center;
+
+  border-radius: 120px;
+
+  font-size: 40px;
+
+  font-weight: bold;
+
+  letter-spacing: 1px;
+
+      box-shadow: 0 1px 30px rgb(255, 255, 255);
+
+  cursor: pointer;
+}
+    nav:hover {
+      transform: translatez(-20px) scale(1.15);
+      background: linear-gradient(360deg, #ff00ff, #00a2ff);
+            box-shadow: 0px 10px 20px rgb(255, 255, 255);
     }
     .container {
-      max-width: 950px;
-      margin: 30px auto;
-      background: white;
-      padding: 25px;
-      border-radius: 16px;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-      transition: transform 0.3s ease;
+      max-width: 800px;
+      margin: 100px auto;
+      width:8000px;
+      background: linear-gradient(180deg, #ff00ff, #00a2ff);
+      padding: 20px;
+      padding-bottom:0px;
+      padding-top:20px;
+      margin-bottom:0;
+      cursor: pointer;
+      border-radius: 90px;
+      box-shadow: 0 10px 99px rgb(0, 8, 255);
+      transition: transform 0.1s ease;
     }
     .container:hover {
-      transform: translateY(-3px);
+      transform: translateY(-70px) scale(1.1);
+      background: linear-gradient(360deg, #ff00ff, #00a2ff);
+            box-shadow: 0 5px 10px rgb(255, 255, 255);
+
     }
     .foods {
       display: flex;
@@ -46,80 +101,218 @@
     }
     .food-box {
       text-align: center;
+        
     }
     .food-box img {
-      width: 130px;
-      height: 130px;
+      width: 160px;
+      height: 160px;
       object-fit: cover;
-      border-radius: 14px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.25);
-      transition: transform 0.3s ease;
+      border-radius: 25px;
+      cursor: pointer;
+      transition: transform 0.1s ;
     }
     .food-box img:hover {
-      transform: scale(1.08);
+      transform: scale(1.2);
+      background: linear-gradient(360deg, #ff00ff, #00a2ff);
+            box-shadow: 0 1px 20px rgb(255, 255, 255);
+
     }
-    select {
-      margin-top: 12px;
-      padding: 8px;
-      border-radius: 6px;
-      border: 1px solid #aaa;
-      outline: none;
-      cursor: pointer;
-      font-size: 15px;
-    }
-    button {
+
+
+    select{
       margin-top: 20px;
-      background: linear-gradient(90deg, #2563eb, #9333ea);
-      color: white;
+      background: linear-gradient(180deg, #00a2ff, #ff00ff);
+      color: rgb(255, 255, 255);
       padding: 10px 20px;
-      border-radius: 8px;
+      border-radius: 50px;
       border: none;
       cursor: pointer;
-      font-size: 16px;
-      transition: 0.3s;
+      font-size: 25px;
+      transition: 0.1s;
+      text-align:center;
+            box-shadow: 0 10px 99px rgb(0, 8, 255);
+
+}
+
+/* Hover */
+select:hover{
+            background: linear-gradient(360deg, #ff00ff, #00a2ff);
+            transform: scale(1.2);
+            box-shadow: 0 1px 20px rgb(255, 255, 255);
+}
+
+  select:active{
+
+      /*transform:scale(1.1);*/
+
+       color:rgb(30, 255, 0);
+
+      box-shadow:
+  0 0 10px rgb(60, 255, 0),
+  0 0 10px rgba(60, 255, 0),
+  0 0 10px rgba(60, 255, 0);
+
+    }
+
+/* Dropdown Main */
+
+select{
+
+  width:100%;
+
+  padding:14px 20px;
+
+  margin-top:15px;
+
+  border:none;
+
+  outline:none;
+
+  border-radius:50px;
+
+  font-size:22px;
+
+  
+
+  text-align:center;
+
+  cursor:pointer;
+
+  color:white;
+
+  background:linear-gradient(
+    180deg,
+     #ff00ff, #00a2ff
+  );
+
+
+}
+
+
+/* Hover */
+
+select:hover{
+
+transition: 0.1s;
+
+  transform:scale(1.05);
+
+  background:linear-gradient(
+    360deg,
+    #ff00ff,
+    #00a2ff
+  );
+
+  box-shadow:
+    0 0 15px rgba(255,255,255,0.8),
+    0 0 25px rgba(255,255,255,0.6);
+}
+
+
+/* Focus */
+
+select:focus{
+
+  box-shadow:
+    0 0 15px #00a2ff,
+    0 0 25px #ff00ff;
+}
+
+
+/* Dropdown options */
+
+select option{
+
+  background:#0d00ff;
+
+  color:#ffffff;
+
+  font-size:24px;
+
+ 
+
+  text-align:center;
+
+  padding:12px;
+}
+
+
+
+    
+    button {
+      margin-top: 20px;
+      background: linear-gradient(180deg,  #ff00ff, #00a2ff);
+      color: rgb(255, 255, 255);
+      padding: 10px 20px;
+      border-radius: 50px;
+      border: none;
+      cursor: pointer;
+      font-size: 25px;
+            box-shadow: 0 10px 99px rgb(0, 8, 255);
+      transition: 0.1s;
     }
     button:hover {
-      background: linear-gradient(90deg, #9333ea, #2563eb);
+      background: linear-gradient(360deg, #ff00ff, #00a2ff);
       transform: scale(1.05);
+            box-shadow: 0 1px 20px rgb(255, 255, 255);
+
+transition: 0.1s;
+
     }
+
+ button:active{
+
+      transform:scale(1.15);
+
+       color:rgb(30, 255, 0);
+
+      box-shadow:
+  0 0 10px rgb(60, 255, 0),
+  0 0 10px rgba(60, 255, 0),
+  0 0 10px rgba(60, 255, 0);
+
+    }
+
     .result {
       text-align: center;
-      font-size: 19px;
+      font-size: 25px;
       margin-top: 25px;
       font-weight: bold;
-      color: #9333ea;
+      color: #ffffff;
     }
   </style>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <nav> 🍽️ NutriCompare  🍛</nav>
-
+  <nav> 🍽️ NutriCompare 🍛</nav>
+  
   <div class="container">
+    
     <div class="foods">
       <div class="food-box">
         <img id="img1" src="https://static.vecteezy.com/system/resources/previews/035/833/474/non_2x/portrait-of-asian-girl-thinking-what-to-eat-choosing-between-cupcake-and-broccoli-vegetables-white-background-photo.jpg" alt="Food 1"/>
         <br>
         <select id="food1">
-          <option value="">-- Select Food 1 --</option>
+          <option value="">  Select Food 1  </option>
         </select>
       </div>
       <div class="food-box">
-        <span style="font-size:22px;font-weight:bold;">VS</span>
+      <span style="font-size:45px; color:white; font-weight:bold;">VS</span>   
       </div>
       <div class="food-box">
         <img id="img2" src="https://static.vecteezy.com/system/resources/previews/035/828/904/non_2x/portrait-of-asian-girl-thinking-what-to-eat-choosing-between-cupcake-and-broccoli-vegetables-white-background-photo.jpg" alt="Food 2"/>
         <br>
         <select id="food2">
-          <option value="">-- Select Food 2 --</option>
+          <option value=""> Select Food 2 </option>
         </select>
       </div>
     </div>
 
     <div style="text-align:center">
-      <button onclick="updateChart()">Compare</button>
+      <button onclick="updateChart()">Compare food items</button>
     </div>
 
-    <canvas id="chart" height="200"></canvas>
+    <canvas id="chart" height="180"></canvas>
     <div class="result" id="resultText"></div>
   </div>
 
@@ -184,7 +377,7 @@ populateFoods();
     let chart;
     function updateChart() {
       if (!food1.value || !food2.value) {
-        alert("⚠️ Please select both foods first!");
+        alert("⚠️Please select both food items!");
         return;
       }
       img1.src = foods[food1.value].img;
@@ -196,14 +389,14 @@ populateFoods();
           {
             label: food1.value,
             data: [foods[food1.value].vitaminC, foods[food1.value].antioxidants, foods[food1.value].protein, foods[food1.value].fat],
-            backgroundColor: "rgba(37, 99, 235, 0.7)",
-            hoverBackgroundColor: "rgba(37, 99, 235, 1)"
+            backgroundColor: "rgba(0, 162, 255, 1)",
+            hoverBackgroundColor: "rgba(0, 162, 255, 1)"
           },
           {
             label: food2.value,
             data: [foods[food2.value].vitaminC, foods[food2.value].antioxidants, foods[food2.value].protein, foods[food2.value].fat],
-            backgroundColor: "rgba(236, 72, 153, 0.7)",
-            hoverBackgroundColor: "rgba(236, 72, 153, 1)"
+            backgroundColor: "rgba(255, 0, 255, 1)",
+            hoverBackgroundColor: "rgba(255, 0, 255, 1)"
           }
         ]
       };
@@ -219,14 +412,41 @@ populateFoods();
             tooltip: { enabled: true }
           },
           scales: {
-            y: { beginAtZero: true }
-          }
+
+  x: {
+
+    ticks: {
+
+      color: "white",
+
+      font: {
+        size: 20,      // Bigger text
+        weight: "bold"
+      }
+    }
+  },
+
+  y: {
+
+    beginAtZero: true,
+
+    ticks: {
+
+      color: "white",
+
+      font: {
+        size: 16,
+        weight: "bold"
+      }
+    }
+  }
+}
         }
       });
       const score1 = foods[food1.value].vitaminC + foods[food1.value].antioxidants + foods[food1.value].protein - foods[food1.value].fat;
       const score2 = foods[food2.value].vitaminC + foods[food2.value].antioxidants + foods[food2.value].protein - foods[food2.value].fat;
       const best = score1 > score2 ? food1.value : food2.value;
-      resultText.innerHTML = "✅ Best for health: <span style='color:#2563eb'>" + best + "</span>";
+      resultText.innerHTML = "Best for health ✅:<span style='color:white'>" + best + "</span>";
     }
   </script>
 </body>

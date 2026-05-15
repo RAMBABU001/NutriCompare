@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Reset Password</title>
+
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    body{
+      font-family: Arial, sans-serif;
+
+      display:flex;
+      justify-content:center;
+      align-items:center;
+
+      min-height:100vh;
+
+      background: linear-gradient(
+        90deg,
+        #ff00ff,
+        #00a2ff,
+        #ff00ff
+      );
+
+      background-size:800% 800%;
+
+      animation:flowColors 6s ease-in-out infinite;
+    }
+
+    @keyframes flowColors{
+
+      0%{
+        background-position:0% 100%;
+      }
+
+      50%{
+        background-position:100% 50%;
+      }
+
+      100%{
+        background-position:50% 100%;
+      }
+    }
+
+    .container{
+
+      width:100%;
+
+      max-width:400px;
+
+      background:linear-gradient(180deg,#ff00ff,#00a2ff);
+
+      padding:35px;
+
+      border-radius:40px;
+
+            box-shadow: 0 10px 99px rgb(0, 8, 255);
+
+
+      cursor:pointer;
+
+      transition:2s ease;
+    }
+
+    .container:hover{
+
+      transform:translateZ(-90px) scale(2.2);
+
+      background:linear-gradient(360deg,#ff00ff,#00a2ff);
+
+      box-shadow:0 1px 20px rgb(255, 255, 255);
+    }
+
+    h2{
+
+      text-align:center;
+
+      margin-bottom:25px;
+
+      color:#ffffff;
+
+      font-size:38px;
+    }
+
+    input{
+
+      width:100%;
+
+      padding:14px;
+
+      margin-bottom:18px;
+
+      border:none;
+
+      outline:none;
+
+      border-radius:30px;
+
+      font-size:16px;
+
+      background:rgb(255, 255, 255);
+
+      transition:0.2s;
+    }
+
+    input:focus{
+
+      background:white;
+
+      transform:scale(1.08);
+
+      box-shadow:0 1px 20px rgb(255,255,255);
+    }
+
+    button{
+
+      width:100%;
+
+      padding:14px;
+
+      border:none;
+
+      border-radius:50px;
+
+      font-size:18px;
+
+      font-weight:bold;
+
+      cursor:pointer;
+
+      color:white;
+
+      background:linear-gradient(180deg, #ff00ff, #00a2ff);
+
+            box-shadow: 0 1px 20px rgb(13, 0, 255);
+
+
+      transition:0.1s ease;
+    }
+
+    button:hover{
+
+      transform:translatez(-20px) scale(1.2);
+
+      background:linear-gradient(360deg,#ff00ff,#00a2ff);
+
+      box-shadow:0 1px 20px rgb(255, 255, 255);
+    }
+
+     button:active{
+
+      transform:scale(1.15);
+
+       color:rgb(30, 255, 0);
+
+      box-shadow:
+  0 0 10px rgb(60, 255, 0),
+  0 0 10px rgba(60, 255, 0),
+  0 0 10px rgba(60, 255, 0);
+
+    }
+    
+
+    .login-text{
+
+      text-align:center;
+
+      margin-top:18px;
+
+      margin-bottom:10px;
+
+      color:#000000;
+
+      font-weight:bold;
+    }
+
+    @media(max-width:500px){
+
+      .container{
+        padding:25px;
+      }
+
+      h2{
+        font-size:28px;
+      }
+
+      input,
+      button{
+        font-size:15px;
+      }
+    }
+
+  </style>
+</head>
+
+<body>
+
+<div class="container">
+
+  <h2>Reset Password</h2>
+
+  <input
+    type="password"
+    id="newPassword"
+    placeholder="Enter New Password"
+  />
+
+  <button onclick="resetPassword()">
+    Update Password
+  </button>
+
+  <p class="login-text">
+    Password reset securely
+  </p>
+
+</div>
+
+<script>
+
+async function resetPassword(){
+
+  const params =
+    new URLSearchParams(window.location.search);
+
+  const email =
+    params.get("email");
+
+  const password =
+    document.getElementById("newPassword").value;
+
+
+  // Empty validation
+  if(password === ""){
+
+    alert("Please enter password");
+
+    return;
+  }
+
+
+  // Strong password validation
+  const passwordPattern =
+  /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/;
+
+  if(!passwordPattern.test(password)){
+
+    alert(
+      "Password must contain alphabets and numbers and be at least 6 characters long"
+    );
+
+    return;
+  }
+
+
+  const res = await fetch(
+    "/reset-password",
+    {
+
+      method:"POST",
+
+      headers:{
+        "Content-Type":"application/json"
+      },
+
+      body:JSON.stringify({
+        email,
+        password
+      })
+    }
+  );
+
+ 
+
+  
+
+  if(res.ok){
+
+    window.location.href = "login.html";
+  }
+}
+
+</script>
+
+</body>
+</html>

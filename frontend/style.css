@@ -1,10 +1,121 @@
 body{
   font-family: Arial, sans-serif;
+  padding: 30px;
+  min-height:  100vh;
+  overflow-x: hidden;
+
+  /* Soft moving colorful gradient */
+  background: linear-gradient(
+    90deg,
+    #00a2ff, #ff00ff
+
+    
+  );
+
+  background-size: 800% 800%;
+
+  /* Smooth slower animation */
+  animation: flowColors 4s ease-in-out infinite;
 }
 
-.food{
-  background:white;
-  padding:15px;
-  border-radius:10px;
-  margin-top:15px;
+/* Very smooth left → right movement */
+@keyframes flowColors{
+
+  0%{
+    background-position: 0% 50%;
+   /* filter: hue-rotate(0deg); */
+  }
+
+  50%{
+    background-position: 100% 50%;
+   /* filter: hue-rotate(20deg); */
+  }
+
+  100%{
+    background-position: 50% 100%;
+    /* filter: hue-rotate(40deg); */
+  }
 }
+.food{
+  background: rgb(255, 255, 255);
+
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+
+  padding: 20px;
+  margin-top: 15px;
+
+  border-radius: 18px;
+
+  color: #ffffff;
+
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+
+  transition:
+    transform 0.2s ease,
+}
+
+.food:hover{
+  transform: translateY(-6px) scale(1.02);
+
+  background: rgb(255, 255, 255);
+
+  box-shadow: 0 12px 25px rgba(0,0,0,0.2);
+}
+
+@media(max-width:768px){
+
+  body{
+    padding: 15px;
+  }
+
+  .food{
+    padding: 15px;
+  }
+}
+
+
+/* Add this CSS */
+
+.login-text{
+  text-align:center;
+  margin-top:20px;
+  margin-bottom:10px;
+  color:#222;
+  font-size:15px;
+  font-weight:bold;
+}
+
+.login-btn{
+
+  width:100%;
+
+  padding:14px;
+
+  border:none;
+
+  border-radius:50px;
+
+  font-size:18px;
+  font-weight:bold;
+
+  cursor:pointer;
+
+  color:white;
+
+  background: linear-gradient(180deg, #ff00ff, #00a2ff);
+
+  transition:0.2s ease;
+
+  box-shadow:0 6px 15px rgba(0,0,0,0.2);
+}
+
+.login-btn:hover{
+
+  transform:translateY(-10px) scale(1.05);
+
+  background: linear-gradient(180deg, #00a2ff, #ff00ff);
+
+  box-shadow:0 10px 20px rgba(0,0,0,0.25);
+}
+

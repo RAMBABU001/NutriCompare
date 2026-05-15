@@ -1,50 +1,121 @@
-async function signup(){
+async function signup() {
+
+  const name = document.getElementById("name").value.trim();
+
+  const email = document.getElementById("email").value.trim();
+
+  const password = document.getElementById("password").value.trim();
+
+  // Validation
+  if(name === "" || email === "" || password === ""){
+
+    alert("Please fill all fields");
+
+    return;
+  }
+
+  // Email validation
+  const emailPattern =
+    /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[A-Za-z]{2,}$/;
+
+  if(!emailPattern.test(email)){
+
+    alert("Please enter a valid email");
+
+    return;
+  }
+
+  // Password validation
+  // Minimum 6 chars + alpha numeric
+  const passwordPattern =
+    /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/;
+
+  if(!passwordPattern.test(password)){
+
+    alert("Password must contain alphabets and numbers and be at least 6 characters long");
+
+    return;
+  }
 
   const data = {
-
-    name: document.getElementById("name").value,
-
-    email: document.getElementById("email").value,
-
-    password: document.getElementById("password").value
+    name,
+    email,
+    password
   };
 
-  const res = await fetch("http://localhost:5000/signup",{
+  const res = await fetch("/signup", {
 
-    method:"POST",
+    method: "POST",
 
-    headers:{
+    headers: {
       "Content-Type":"application/json"
     },
 
-    body:JSON.stringify(data)
+    body: JSON.stringify(data)
   });
 
   const result = await res.json();
 
   alert(result.message);
 
-   window.location.href = "login.html";
+  if(res.ok){
+
+    window.location.href = "login.html";
+  }
 }
 
-async function login(){
+
+
+async function login() {
+
+  const email = document.getElementById("email").value.trim();
+
+  const password = document.getElementById("password").value.trim();
+
+  // Validation
+  if(email === "" || password === ""){
+
+    alert("Please fill all fields");
+
+    return;
+  }
+
+  // Email validation
+  const emailPattern =
+    /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[A-Za-z]{2,}$/;
+
+  if(!emailPattern.test(email)){
+
+    alert("Please enter a valid email");
+
+    return;
+  }
+
+  // Password validation
+  const passwordPattern =
+    /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/;
+
+  if(!passwordPattern.test(password)){
+
+    alert("Password is invalid");
+
+    return;
+  }
 
   const data = {
-
-    email: document.getElementById("email").value,
-
-    password: document.getElementById("password").value
+    email,
+    password
   };
 
-  const res = await fetch("http://localhost:5000/login",{
+  const res = await fetch("/login", {
 
-    method:"POST",
+    method: "POST",
 
-    headers:{
+    headers: {
       "Content-Type":"application/json"
     },
 
-    body:JSON.stringify(data)
+    body: JSON.stringify(data)
   });
 
   const result = await res.json();
@@ -53,12 +124,10 @@ async function login(){
 
     localStorage.setItem("token", result.token);
 
-    alert("Login Success");
-
     window.location.href = "home.html";
+  }
+  else{
 
-  }else{
-
-    alert(result.message);
+    alert("Please enter valid credentials");
   }
 }

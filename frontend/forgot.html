@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Forgot Password</title>
+
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    body{
+
+      font-family:Arial,sans-serif;
+
+      display:flex;
+      justify-content:center;
+      align-items:center;
+
+      min-height:100vh;
+
+      background:linear-gradient(
+        90deg,
+        #ff00ff,
+        #00a2ff,
+        #ff00ff
+      );
+
+      background-size:800% 800%;
+
+      animation:bg 6s ease-in-out infinite;
+    }
+
+    @keyframes bg{
+
+      0%{
+        background-position:0% 50%;
+      }
+
+      50%{
+        background-position:100% 50%;
+      }
+
+      100%{
+        background-position:0% 50%;
+      }
+    }
+
+    .box{
+
+      width:100%;
+      max-width:400px;
+
+      padding:35px;
+
+      border-radius:40px;
+
+      background:linear-gradient(
+        180deg,
+        #ff00ff,
+        #00a2ff
+      );
+
+      box-shadow: 0 10px 99px rgb(0, 8, 255);
+
+      cursor:pointer;
+
+      transition:2s ease;
+    }
+
+    .box:hover{
+
+      transform:translateZ(-80px) scale(1.32);
+
+      background:linear-gradient(
+        360deg,
+        #ff00ff,
+        #00a2ff
+      );
+
+      box-shadow:0 1px 20px rgb(255,255,255);
+    }
+
+    h2{
+
+      color:white;
+
+      margin-bottom:20px;
+
+      text-align:center;
+
+      font-size:40px;
+    }
+
+    input{
+
+      width:100%;
+
+      padding:14px;
+
+      margin-top:15px;
+
+      border:none;
+
+      border-radius:30px;
+
+      outline:none;
+
+      font-size:17px;
+
+      background:rgb(255, 255, 255);
+
+      transition:0.2s;
+    }
+
+    input:focus{
+
+      background:white;
+
+      transform:scale(1.08);
+
+      box-shadow:0 1px 20px rgb(255,255,255);
+    }
+
+    button{
+
+      width:100%;
+
+      margin-top:20px;
+
+      padding:14px;
+
+      border:none;
+
+      border-radius:50px;
+
+      cursor:pointer;
+
+      color:white;
+
+      font-size:18px;
+
+      font-weight:bold;
+
+      background:linear-gradient(
+        180deg,
+         #ff00ff, #00a2ff
+      );
+
+            box-shadow: 0 10px 99px rgb(0, 8, 255);
+
+
+      transition:0.1s ease;
+    }
+
+    button:hover{
+
+       transform:translatez(-40px) scale(1.1);
+
+        background: linear-gradient(360deg, #ff00ff, #00a2ff);
+
+box-shadow:
+  0 0 10px rgba(255, 255, 255),
+  0 0 10px rgba(255, 255, 255),
+  0 0 10px rgb(255, 255, 255);
+
+
+
+    }
+
+    button:active{
+
+      transform:scale(1.15);
+
+       color:rgb(30, 255, 0);
+
+      box-shadow:
+  0 0 10px rgb(60, 255, 0),
+  0 0 10px rgba(60, 255, 0),
+  0 0 10px rgba(60, 255, 0);
+
+    }
+
+    .info-text{
+
+      text-align:center;
+
+      margin-top:18px;
+
+      color:#000000;
+
+      font-weight:bold;
+
+      font-size:16px;
+    }
+
+    @media(max-width:500px){
+
+      .box{
+        padding:25px;
+      }
+
+      h2{
+        font-size:30px;
+      }
+
+      input,
+      button{
+        font-size:15px;
+      }
+    }
+
+  </style>
+</head>
+
+<body>
+
+<div class="box">
+
+  <h2>Forgot Password</h2>
+
+  <input
+    type="email"
+    id="email"
+    placeholder="Enter Email"
+  >
+
+  <button onclick="sendOTP()">
+    Send OTP
+  </button>
+
+  <input
+    type="text"
+    id="otp"
+    placeholder="Enter 4 Digit OTP"
+  >
+
+  <button onclick="verifyOTP()">
+    Verify OTP
+  </button>
+
+  <button onclick="sendOTP()">
+    Resend OTP
+  </button>
+
+  <p class="info-text">
+    OTP will be sent securely to your Gmail
+  </p>
+
+</div>
+
+<script>
+
+async function sendOTP(){
+
+  const email =
+    document.getElementById("email").value;
+
+  if(email === ""){
+
+    alert("Enter Email");
+
+    return;
+  }
+
+  const emailPattern =
+/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[A-Za-z]{2,}$/;
+
+if(!emailPattern.test(email)){
+
+  alert("Enter valid Email");
+
+  return;
+}
+
+  const res = await fetch(
+    "/send-otp",
+    {
+
+      method:"POST",
+
+      headers:{
+        "Content-Type":"application/json"
+      },
+
+      body:JSON.stringify({ email })
+    }
+  );
+
+  const result = await res.json();
+
+  alert(result.message);
+}
+
+
+
+async function verifyOTP(){
+
+  const otp =
+    document.getElementById("otp").value;
+
+  const email =
+    document.getElementById("email").value;
+
+  const res = await fetch(
+    "/verify-otp",
+    {
+
+      method:"POST",
+
+      headers:{
+        "Content-Type":"application/json"
+      },
+
+      body:JSON.stringify({ otp })
+    }
+  );
+
+  const result = await res.json();
+
+  if(result.success){
+
+    
+    window.location.href =
+      "reset.html?email=" + email;
+
+  }else{
+
+    alert("Invalid OTP");
+  }
+}
+
+</script>
+
+</body>
+</html>
