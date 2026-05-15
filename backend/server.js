@@ -54,9 +54,9 @@ app.post("/send-otp", async (req, res) => {
 
       auth: {
 
-        user: "nutricompare8374@gmail.com",
+        user: process.env.EMAIL_USER,
 
-        pass: "gnqg plll wmxy gyje"
+        pass: process.env.EMAIL_PASS
       }
     });
 
@@ -96,7 +96,7 @@ app.post("/verify-otp", (req, res) => {
 
   const { otp } = req.body;
 
-  if(otp === savedOTP){
+if(savedOTP !== "" && otp === savedOTP){
 
     res.json({
       success: true
