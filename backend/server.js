@@ -47,18 +47,22 @@ app.post("/send-otp", async (req, res) => {
   savedOTP =
     Math.floor(1000 + Math.random() * 9000).toString();
 
-  const transporter =
-    nodemailer.createTransport({
+const transporter =
+  nodemailer.createTransport({
 
-      service: "gmail",
+    host: "smtp.gmail.com",
 
-      auth: {
+    port: 587,
 
-        user: process.env.EMAIL_USER,
+    secure: false,
 
-        pass: process.env.EMAIL_PASS
-      }
-    });
+    auth: {
+
+      user: process.env.EMAIL_USER,
+
+      pass: process.env.EMAIL_PASS
+    }
+  });
 
   const mailOptions = {
 
