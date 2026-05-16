@@ -50,7 +50,7 @@ app.post("/send-otp", async (req, res) => {
 const transporter =
   nodemailer.createTransport({
 
-    host: "smtp.office365.com",
+    host: "smtp-relay.brevo.com",
 
     port: 587,
 
