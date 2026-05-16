@@ -28,7 +28,7 @@ async function signup() {
   // Password validation
   // Minimum 6 chars + alpha numeric
   const passwordPattern =
-    /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/;
+    /^(?=.*[A-Za-z])(?=.*\d).{6,}$/;
 
   if(!passwordPattern.test(password)){
 
@@ -93,7 +93,7 @@ async function login() {
 
   // Password validation
   const passwordPattern =
-    /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/;
+    /^(?=.*[A-Za-z])(?=.*\d).{6,}$/;
 
   if(!passwordPattern.test(password)){
 

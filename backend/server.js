@@ -5,11 +5,12 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 const nodemailer = require("nodemailer");
 const bcrypt = require("bcryptjs");
+const axios = require("axios");
 
 const authRoutes = require("./routes/authRoutes");
 const foodRoutes = require("./routes/foodRoutes");
 
-const User = require("./models/User"); // ADD THIS
+const User = require("./models/User");
 
 const app = express();
 
@@ -29,8 +30,6 @@ mongoose.connect(process.env.MONGO_URI)
 .then(() => console.log("MongoDB Connected"))
 .catch(err => console.log(err));
 
-
-
 let savedOTP = "";
 let savedEmail = "";
 
@@ -43,41 +42,45 @@ app.post("/send-otp", async (req, res) => {
 
   savedEmail = email;
 
-  // 4 digit OTP
   savedOTP =
     Math.floor(1000 + Math.random() * 9000).toString();
 
-const transporter =
-  nodemailer.createTransport({
-
-    host: "smtp-relay.brevo.com",
-
-    port: 587,
-
-    secure: false,
-
-    auth: {
-
-      user: process.env.EMAIL_USER,
-
-      pass: process.env.EMAIL_PASS
-    }
-  });
-
-  const mailOptions = {
-
-    from: process.env.EMAIL_USER,
-
-    to: email,
-
-    subject: "NutriCompare - Password Reset OTP",
-
-    text: `Your OTP is ${savedOTP}`
-  };
-
   try{
 
-    await transporter.sendMail(mailOptions);
+    await axios.post(
+
+      "https://api.brevo.com/v3/smtp/email",
+
+      {
+
+        sender: {
+
+          name: "NutriCompare",
+
+          email: "nutricompare8374@gmail.com"
+        },
+
+        to: [
+          {
+            email: email
+          }
+        ],
+
+        subject: "NutriCompare - Password Reset OTP",
+
+        textContent: `Your OTP is ${savedOTP}`
+      },
+
+      {
+
+        headers: {
+
+          "api-key": process.env.BREVO_API_KEY,
+
+          "Content-Type": "application/json"
+        }
+      }
+    );
 
     res.json({
       message: "OTP Sent Successfully"
@@ -85,7 +88,7 @@ const transporter =
 
   }catch(error){
 
-    console.log(error);
+    console.log(error.response?.data || error);
 
     res.status(500).json({
       message: "Failed To Send OTP"
@@ -100,7 +103,7 @@ app.post("/verify-otp", (req, res) => {
 
   const { otp } = req.body;
 
-if(savedOTP !== "" && otp === savedOTP){
+  if(savedOTP !== "" && otp === savedOTP){
 
     res.json({
       success: true
@@ -123,7 +126,6 @@ app.post("/reset-password", async (req, res) => {
 
   try{
 
-    // hash new password
     const hashedPassword =
       await bcrypt.hash(password, 10);
 
