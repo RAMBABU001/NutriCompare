@@ -55,10 +55,10 @@ app.post("/send-otp", async (req, res) => {
 
         sender: {
 
-          name: "NutriCompare",
+  name: "NutriCompare",
 
-          email: "nutricompare8374@gmail.com"
-        },
+  email: "nutricompare8374@gmail.com"
+},
 
         to: [
           {
