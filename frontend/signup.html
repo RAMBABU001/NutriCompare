@@ -3,165 +3,236 @@
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Signup</title>
-
+  <link rel="icon" href="fav1.png">
+  <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
   <style>
-
     *{
       margin:0;
       padding:0;
       box-sizing:border-box;
     }
-
     body{
-      font-family: Arial, sans-serif;
-
-      display:flex;
-      justify-content:center;
-      align-items:center;
-
-      min-height:100vh;
-
-      background: linear-gradient(
-    90deg,
-    #ff00ff,
-    #00a2ff, 
-    #ff00ff  
-  );
-
-  background-size: 800% 800%;
-
-  /* Smooth slower animation */
-  animation: flowColors 6s ease-in-out infinite;
-
-  
+    font-family: 'Inter', sans-serif;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    min-height:100vh;
+    overflow:hidden;
+    background:#000000;
+    position:relative;
 }
 
-/* Very smooth left → right movement */
-@keyframes flowColors{
-
-  0%{
-    background-position: 0% 100%;
-   /* filter: hue-rotate(0deg); */
-  }
-
-  50%{
-    background-position: 100% 50%;
-   /* filter: hue-rotate(20deg); */
-  }
-
-  100%{
-    background-position: 50% 100%;
-    /* filter: hue-rotate(40deg); */
-  }
+body::before,
+body::after{
+    content:"";
+    position:absolute;
+    inset:-30%;
+    filter:blur(120px);
+    animation:moveBg 16s ease-in-out infinite alternate;
 }
+
+body::before{
+    background:
+    radial-gradient(circle at 20% 20%,
+        #ff00c8 0%,
+        transparent 35%),
+
+    radial-gradient(circle at 80% 25%,
+        #00a2ff 0%,
+        transparent 40%),
+
+    radial-gradient(circle at 50% 80%,
+        #ff00c8 0%,
+        transparent 35%);
+}
+
+body::after{
+    background:
+    radial-gradient(circle at 75% 75%,
+        #00a2ff 0%,
+        transparent 40%),
+
+    radial-gradient(circle at 15% 70%,
+        #ff00c8 0%,
+        transparent 35%);
+
+    animation-duration:20s;
+    animation-direction:alternate-reverse;
+}
+@keyframes moveBg{
+
+    0%{
+        transform:
+            translate(-5%, -5%)
+            scale(1)
+            rotate(0deg);
+    }
+
+    50%{
+        transform:
+            translate(5%, 3%)
+            scale(1.15)
+            rotate(180deg);
+    }
+
+    100%{
+        transform:
+            translate(-3%, 6%)
+            scale(1.3)
+            rotate(360deg);
+    }
+}
+
     .container{
-
+      opacity:0;
+      animation:fadeIn 3.6s ease forwards;
+      transform: scale(0.8);
       width:100%;
       max-width:400px;
-
-      background: linear-gradient(180deg, #ff00ff, #00a2ff);
-
+      background: linear-gradient(180deg,#ff00c8,#00a2ff);
       padding:35px;
-
       border-radius:40px;
-
-      box-shadow: 0 10px 99px rgb(0, 8, 255);
+      box-shadow:0 1px 10px rgb(0, 0, 0);
       cursor:pointer;
-      transition:2s ease;
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+      transition:
+        transform 1.8s cubic-bezier(.22,1,.36,1),
+        box-shadow 1.8s cubic-bezier(.22,1,.36,1),
+        border-radius 1.8s cubic-bezier(.22,1,.36,1);
+}
+      @keyframes fadeIn{
+    from{
+        opacity:0;
     }
 
+    to{
+        opacity:1;
+    }
+}
+    
+    .container::before {
+      content: '';
+      position: absolute;
+      z-index: -2;
+      left: -50%;
+      top: -100%;
+      width: 200%;
+      height: 300%;
+background: conic-gradient(
+    #ffffff 0deg,
+    #ffffff 45deg,
+    #ffffff 90deg,
+    #000000 135deg,
+    #ffffff 180deg,
+    #ffffff 225deg,
+    #ffffff 270deg,
+    #000000 315deg,
+    #ffffff 360deg);
+animation: rotateBorder 4s linear infinite;
+      border-radius: 50%;
+      opacity: 0;
+      transition: opacity 0.2s ease;
+    }
+
+      .container::after {
+        content: '';
+        position: absolute;
+        z-index: -1;
+        inset: 4px;
+        background: linear-gradient(180deg, #ff00c8,#00a2ff);
+        border-radius: 36px;
+     
+    }
+    @keyframes rotateBorder {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
     .container:hover{
-transform: translateZ(-80px) scale(1.4);  
-background: linear-gradient(360deg, #ff00ff, #00a2ff);
-      box-shadow: 0 1px 20px rgb(255, 255, 255);
-
+      opacity:1;
+      border-radius:40px;
+      transform:  scale(1.065);  
+      box-shadow: 0 50px 50px rgb(0, 0, 0);
     }
-
+    .container:hover::before {
+      opacity: 1;
+    }
+    .container:hover::after {
+       background: linear-gradient(0deg, #ff00c8,#00a2ff);
+       
+    }
     h2{
+      font-family: 'Times New Roman', serif;
       text-align:center;
       margin-bottom:25px;
-      color:#fffdfd;
+      color:#ffffff;
       font-size:42px;
     }
 
+input::placeholder {
+  color: #000000; 
+  opacity: 1; 
+}
+
     input{
-
       width:100%;
-
       padding:14px;
-
       margin-bottom:18px;
-
       border:none;
-
       outline:none;
-
-      border-radius:30px;
-
+      border-radius:10px;
       font-size:16px;
-
       background: rgb(255, 255, 255);
-
-      transition:0.1s;
+      transition:0.3s;
+      
     }
 
     input:focus{
-
+       color:rgb(0, 0, 0);
+       border-radius:40px;
       background:rgb(255, 255, 255);
+      transform:scale(1.04);
+      box-shadow: 0 15px 15px rgb(0, 0, 0);
+      outline: 1.5px solid #ffffff;
+      outline-offset: 1.5px;
+      
 
-      transform:scale(1.08);
-
-      box-shadow: 0 1px 20px rgb(255, 255, 255);
     }
-
     button{
-
       width:100%;
-
       padding:14px;
-
       border:none;
-
-      border-radius:50px;
-
+      border-radius:10px;
       font-size:18px;
       font-weight:bold;
-
       cursor:pointer;
-
       color:white;
-
-      background: linear-gradient(180deg,  #ff00ff, #00a2ff);
-
-      box-shadow: 0 1px 10px rgb(13, 0, 255);
-
-      transition:0.1s ease;
-      
-     
+      background: linear-gradient(180deg, #ff00c8,#00a2ff);
+      outline: 1.6px solid #ffffff;
+      outline-offset: 1.5px;
+      transition:0.2s ease; 
     }
-
     button:hover{
-
-      transform:translatez(-20px) scale(1.2);
-
-      background: linear-gradient(360deg, #ff00ff, #00a2ff);
-
-      box-shadow: 0 1px 20px rgb(255, 255, 255);
-    }
-
-     button:active{
-
-      transform:scale(1.15);
-
-       color:rgb(30, 255, 0);
-
+    border-radius:30px;
+    outline: 1.6px solid #00ff11;
+    outline-offset: 1.5px;
+    transform: scale(1.08);  
+    background: linear-gradient(0deg, #ff00c8,#00a2ff);
+    box-shadow: 0 15px 15px rgb(0, 0, 0);
+    color: #00ff11;
+    transition:0.2s ease; 
+}
+    button:active{
+      outline: 4px solid #00ff11;
+      outline-offset: 0px;
+      transform:scale(1.14);
+      color:rgb(60, 255, 1);
       box-shadow:
-  0 0 10px rgb(60, 255, 0),
-  0 0 10px rgba(60, 255, 0),
-  0 0 10px rgba(60, 255, 0);
-
-    }
-
+      0 0 15px rgb(60, 255, 1),
+      0 0 15px rgba(60, 255, 1),
+      0 0 15px rgba(60, 255, 1);
+}
     .login-text{
       text-align:center;
       margin-top:18px;
@@ -169,60 +240,154 @@ background: linear-gradient(360deg, #ff00ff, #00a2ff);
       color:#000000;
       font-weight:bold;
     }
-
     .login-btn{
+      font-size: 22px;
       margin-top:5px;
     }
 
-    @media(max-width:500px){
-
-      .container{
-        padding:25px;
-      }
-
-      h2{
-        font-size:28px;
-      }
-
-      input,
-      button{
-        font-size:15px;
-      }
+    .password-wrapper {
+      position: relative;
+      width: 100%;
     }
+    
+    .password-wrapper input {
+      padding-right: 50px; /* Stops text from going behind the icon */
+    }
+
+    #toggleIcon {
+      position: absolute;
+      right: 5px;
+      top: 9px;
+      width: 28px;
+      cursor: pointer;
+      transition: 0.3s;
+      z-index: 10;
+    }
+
+ #toggleIcon{
+    opacity:0;
+    visibility:hidden;
+    transform:translateX(10px);
+    transition:.3s cubic-bezier(0.16,1,0.3,1);
+}
+
+#toggleIcon.show{
+    opacity:1;
+    visibility:visible;
+    transform:translateX(0);
+}
+
+   @media (max-width:768px){
+
+    body{
+        padding:20px;
+        overflow:hidden;
+    }
+
+    .container{
+        width:100%;
+        max-width:380px;
+        padding:28px 22px;
+        border-radius:30px;
+        transform:scale(1);
+    }
+
+    .container::after{
+        border-radius:26px;
+    }
+
+    h2{
+        font-size:34px;
+        margin-bottom:20px;
+    }
+
+    input{
+        font-size:16px;
+        padding:13px;
+        margin-bottom:15px;
+    }
+
+    input:focus{
+        transform:scale(1.02);
+    }
+
+    button{
+        font-size:17px;
+        padding:13px;
+    }
+
+    .login-btn{
+        font-size:19px;
+    }
+
+    .login-text{
+        font-size:15px;
+        margin-top:15px;
+        margin-bottom:10px;
+    }
+
+    #toggleIcon{
+        width:26px;
+        top:10px;
+        right:8px;
+    }
+
+    body::before,
+    body::after{
+        filter:blur(90px);
+    }
+}
+
+@media (max-width:480px){
+
+    .container{
+        max-width:100%;
+        padding:24px 18px;
+        border-radius:25px;
+    }
+
+    h2{
+        font-size:30px;
+    }
+
+    input{
+        padding:12px;
+        font-size:15px;
+    }
+
+    button{
+        font-size:16px;
+        padding:12px;
+    }
+
+    .login-btn{
+        font-size:18px;
+    }
+
+    .login-text{
+        font-size:14px;
+    }
+}
 
   </style>
 </head>
-
 <body>
-
-  
-
 <div class="container">
-
   <h2>Signup</h2>
-
-  <input type="text" id="name" placeholder="Enter Name">
-
-  <input type="email" id="email" placeholder="Enter Email">
-
-  <input type="password" id="password" placeholder="Enter Password">
-
-  <button onclick="signup()">Signup</button>
-
-  <!-- Added Below Signup Button -->
-
+  <input type="text" id="name" placeholder="Enter Name" oninput="this.value=this.value.replace(/\s/g,'')">
+  <input type="email" id="email" placeholder="Enter Email" oninput="this.value=this.value.replace(/\s/g,'')">
+<div class="password-wrapper">
+    <input type="password" id="password" placeholder="Enter Password" oninput="this.value=this.value.replace(/\s/g,'');handlePasswordInput();">
+    <img src="https://img.icons8.com/nolan/64/closed-eye.png" id="toggleIcon" onclick="toggleVisibility()">
+  </div>  <button class="login-btn" onclick="signup()">Signup</button>
   <p class="login-text">
     Already have an account?
   </p>
-
   <button class="login-btn" onclick="window.location.href='login.html'">
     Login
   </button>
-
 </div>
-
-
 <script src="auth.js"></script>
-
 </body>
 </html>
+

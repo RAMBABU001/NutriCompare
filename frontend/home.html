@@ -1,315 +1,1052 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta charset="UTF-8" />
-  <title> NutriCompare </title>
+  <title>NutriCompare</title>
+  <link rel="icon" href="fav1.png">
+  <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      border-radius: 20px;
-      padding: 0;
-      min-height: 100vh;
-      height: auto;
-
- background:linear-gradient(
-        90deg,
-        #ff00ff,
-        #00a2ff,
-        #ff00ff
-      );
-
-      background-size:800% 800%;
-
-      animation:bg 6s ease-in-out infinite;
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
     }
+    body{
+    font-family: 'Inter', sans-serif;
+    flex-direction:column;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    min-height:100vh;
+    overflow-x:hidden;
+    overflow-y:auto;
+    background:#000000;
+    position:relative;
+     user-select:none;
+}
+::-webkit-scrollbar{ width:8px; } 
+::-webkit-scrollbar-track{ background:#000000; } 
+::-webkit-scrollbar-thumb{ background:linear-gradient(180deg,#ff00c8,#00a2ff); border-radius:10px; } 
+::-webkit-scrollbar-thumb:hover{ background:linear-gradient(180deg,#00a2ff,#ff00c8); box-shadow: 0 1px 55px rgb(255, 255, 255); transform: scale(1.05); }
 
-    @keyframes bg{
-
-      0%{
-        background-position:0% 50%;
-      }
-
-      50%{
-        background-position:100% 50%;
-      }
-
-      100%{
-        background-position:0% 50%;
-      }
-    }
 
 
-    
 nav{
+    background:linear-gradient(180deg,#ff00c8,#00a2ff);
+    color:white;
+    scale: 1;
+    width:100%;
+    max-width:1000px;
 
-  background: linear-gradient(180deg, #ff00ff, #00a2ff);
+    margin:20px auto 0;
 
-  color: white;
+    padding:5px;
 
-   width:1400px;
+    text-align:center;
 
-  margin:auto; 
+    border-radius:20px 20px 0px 0px;
 
-  padding: 20px;
+    font-size:30px;
+    font-weight:bold;
 
-  text-align: center;
+    cursor:pointer;
 
-  border-radius: 120px;
+    position:relative;
+    z-index:100;
 
-  font-size: 40px;
-
-  font-weight: bold;
-
-  letter-spacing: 1px;
-
-      box-shadow: 0 1px 30px rgb(255, 255, 255);
-
-  cursor: pointer;
-
-  
+    transition:.3s;
+}
+     nav:hover {
+       background: linear-gradient(360deg, #ff00c8, #00a2ff);
+       border-radius:60px;
+     box-shadow:
+    0 0 22px rgb(255, 255, 255),
+    0 0 22px rgb(255, 255, 255),
+    0 0 22px rgb(255, 255, 255);
+     
+    transition: .5s;
 }
 
-
-
-.logo{
-
-  color:white;
-
-  font-weight:bold;
-
-  text-shadow:
-    0 0 1px #ffffff,
-    0 0 3px #ffffff,
+.container{
+    scale: 0.8;
+    z-index: 1;
+    max-width:800px;
+    margin-top:0;
+    width:100%;
+    margin:0px auto 0;
+    padding:50px 30px;
+    background:linear-gradient(180deg,#ff00c8,#00a2ff);
+    border-radius:90px;
+    cursor:pointer;
+ transition:
+        transform 2s cubic-bezier(.22,1,.36,1);
+            position: relative;
     
-
 }
-    nav:hover {
-      transform: translatez(-20px) scale(1.15);
-      background: linear-gradient(360deg, #ff00ff, #00a2ff);
-            box-shadow: 0px 10px 20px rgb(255, 255, 255);
-    }
-    .container {
-      max-width: 800px;
-      margin: 100px auto;
-      width:8000px;
-      background: linear-gradient(180deg, #ff00ff, #00a2ff);
-      padding: 20px;
-      padding-bottom:0px;
-      padding-top:20px;
-      margin-bottom:0;
-      cursor: pointer;
-      border-radius: 90px;
-      box-shadow: 0 10px 99px rgb(0, 8, 255);
-      transition: transform 0.1s ease;
-    }
-    .container:hover {
-      transform: translateY(-72.5px) scale(1.1);
-      background: linear-gradient(360deg, #ff00ff, #00a2ff);
-            box-shadow: 0 5px 10px rgb(255, 255, 255);
 
-    }
+.container:hover{
+    border-radius:0px 0px 20px 20px;
+      transform:scale(1.25);  
+    background:linear-gradient(360deg,#ff00c8,#00a2ff);
+        animation:3s auto;
+}
+
+
+.loading-text {
+  margin: 0;
+font-family: 'Times New Roman', serif;
+  letter-spacing: -2.5px;
+  font-size: 60px;
+  font-weight: bold;
+  text-align: center;
+}
     .foods {
       display: flex;
       justify-content: space-around;
       align-items: center;
       flex-wrap: wrap;
-      gap: 20px;
-      margin-bottom: 25px;
-    }
-    .food-box {
+      gap: 100px;
+      margin-bottom: 35px;
+}
+    .food-box1 {
+      margin-bottom: 50px;
       text-align: center;
-        
-    }
+}
     .food-box img {
-      width: 160px;
+      margin-bottom: 15px;
+      margin-top: 4px;
+      max-width: 160px;
       height: 160px;
+      margin-left: 10px ;
+      margin-right: 10px;
       object-fit: cover;
-      border-radius: 25px;
+      border-radius:20px;
       cursor: pointer;
       transition: transform 0.1s ;
-    }
+
+}
     .food-box img:hover {
-      transform: scale(1.2);
-      background: linear-gradient(360deg, #ff00ff, #00a2ff);
-            box-shadow: 0 1px 20px rgb(255, 255, 255);
-
-    }
-
-
-    select{
-      margin-top: 20px;
-      background: linear-gradient(180deg, #00a2ff, #ff00ff);
-      color: rgb(255, 255, 255);
-      padding: 20px 20px;
-      border-radius: 50px;
-      border: none;
-      cursor: pointer;
-      font-size: 25px;
-      transition: 0.1s;
-      text-align:center;
-            box-shadow: 0 10px 99px rgb(0, 8, 255);
-
+            border-radius: 0px;
+          outline-offset: 1.8px;
+    outline: 1.4px solid #ffffff;
+      transform: scale(1.05);
+      background: linear-gradient(360deg, #ff00c8, #00a2ff);
+           box-shadow: 0 1px 35px rgb(255, 255, 255); 
 }
-
-/* Hover */
-select:hover{
-            background: linear-gradient(360deg, #ff00ff, #00a2ff);
-            transform: scale(1.2);
-            box-shadow: 0 1px 20px rgb(255, 255, 255);
+     select{
+      margin-top: 0px;
+      width:100%;
+      padding:10px;
+      border:none;
+      border-radius:10px;
+      font-size:20px;
+      cursor:pointer;
+      color:white;
+      background: linear-gradient(180deg, #ff00c8,#00a2ff);
+      outline: 1.1px solid #ffffff;
+      outline-offset: 1.5px;
+      transition:0.2s ease; 
 }
-
-  select:active{
-
-      /*transform:scale(1.1);*/
-
-       color:rgb(30, 255, 0);
-
-      box-shadow:
-  0 0 10px rgb(60, 255, 0),
-  0 0 10px rgba(60, 255, 0),
-  0 0 10px rgba(60, 255, 0);
-
-    }
-
-/* Dropdown Main */
-
-select{
-
-  width:100%;
-
-  padding:15px;
-
-  margin-top:10px;
-
-  border:none;
-
-  outline:none;
-
-  border-radius:50px;
-
-  font-size:22px;
-
-  
-
-  text-align:center;
-
-  cursor:pointer;
-
-  color:white;
-
-  background:linear-gradient(
-    180deg,
-     #ff00ff, #00a2ff
-  );
-
-
+    select:hover{
+    border-radius:40px;
+    outline: 1.1px solid #ffffff;
+    outline-offset: 1.5px;
+    background: linear-gradient(0deg, #ff00c8,#00a2ff);
+    box-shadow: 0 25px 25px rgb(0, 0, 0);
+    color: #000000;
+    transition:0.2s ease; 
 }
+    select:active{
 
-
-/* Hover */
-
-select:hover{
-
-transition: 0.1s;
-
-  transform:scale(1.05);
-
-  background:linear-gradient(
-    360deg,
-    #ff00ff,
-    #00a2ff
-  );
-
-  box-shadow:
-    0 0 15px rgba(255,255,255,0.8),
-    0 0 25px rgba(255,255,255,0.6);
+      outline: 4px solid #00ff11;
+      outline-offset: 1.8px;
+      color:rgb(60, 255, 1);
+      transition:0.01s ease; 
 }
-
-
-/* Focus */
-
-select:focus{
-
-  box-shadow:
-    0 0 15px #00a2ff,
-    0 0 25px #ff00ff;
-}
-
-
-/* Dropdown options */
 
 select option{
-
-  background:#0d00ff;
-
+   position:absolute;
+  top:100%;
+  left:0;
+  background:#000000;
   color:#ffffff;
-
-  font-size:24px;
-
- 
-
+  font-size:20px;
   text-align:center;
+  padding:8px;
+  
+}
+    button{
+      margin-top: 0px;
+      width:40%;
+      padding:10px;
+      border:none;
+      border-radius:10px;
+      font-size:24px;
+      cursor:pointer;
+      color:white;
+      background: linear-gradient(180deg, #ff00c8,#00a2ff);
+      outline: 1.1px solid #ffffff;
+      outline-offset: 1.5px;
+      transition:0.2s ease; 
+}
+    button:hover{
+      scale: 1.1;
+    border-radius:30px;
+    outline: 1.1px solid #00ff11;
+    outline-offset: 1.5px;
+    background: linear-gradient(0deg, #ff00c8,#00a2ff);
+    box-shadow: 0 30px 30px rgb(0, 0, 0);
+    color: #00ff00;
+    transition:0.2s ease; 
+}
+    button:active{
+      outline: 4px solid #00ff11;
+      outline-offset: 1.2px;
+      transform:scale(1.2);
+      color:rgb(60, 255, 1);
 
-  padding:12px;
+}
+    .result {
+      text-align: center;
+       padding-bottom:0;
+       margin-bottom:0;
+      font-size: 40px;
+      margin-top: 35px;
+      font-weight: bold;
+      color: #ffffff;
+      display:none;
+} 
+#chart{
+        margin-top: 25px;
+   display:none;
+    max-height:350px;
+    border:0.5px solid rgb(255, 255, 255);
+}
+
+#bg{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    z-index:-1;
+    pointer-events:none;
+}
+.profile-btn{
+    position:fixed;
+    top:22px;
+    right:22px;
+    z-index:9999;
+    cursor:pointer;
+}
+
+
+.top-avatar{
+    width:60px;
+    height:60px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:26px;
+    font-weight:bold;
+    color:#fff;
+    background:linear-gradient(
+        135deg,
+        #ff00c8,
+        #00a2ff
+    );
+    transition:0.4s ease; 
+}
+
+.top-avatar:hover{
+   display:flex;
+    align-items:center;
+    justify-content:center;
+      border-radius:60px;
+   transform: scale(1.15);
+    transition:0.3s ease; 
+        background:linear-gradient(315deg,#ff00c8,#00a2ff);
+      box-shadow:
+    0 0 22px rgb(255, 255, 255),
+    0 0 22px rgb(255, 255, 255),
+    0 0 22px rgb(255, 255, 255);
+}
+
+
+.profile-panel{
+    position:fixed;
+    top:0;
+    right:-300px;
+    width:300px;
+    height:100vh;
+
+    background:rgba(255, 255, 255, 0);
+    backdrop-filter:blur(10px);
+
+    border-left:1.5px solid rgb(99, 99, 99);
+
+    transition:2.5s ease;
+    z-index:9998;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    padding-top:80px;
+}
+
+.profile-panel.active{
+    right:0;
+    box-shadow:
+    0 0 25px rgba(0, 229, 255, 0),
+    0 0 25px rgba(0, 81, 255, 0);
+}
+
+.profile-avatar{
+    width:150px;
+    height:150px;
+
+    border-radius:50%;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    overflow:hidden;
+
+    font-size:52px;
+    font-weight:bold;
+    color:white;
+
+    background:linear-gradient(
+        135deg,
+        #ff00c8,
+        #00a2ff
+    );
+
+    transition:0.3s ease; 
+
+}
+.profile-avatar:hover{
+background:linear-gradient(315deg,#ff00c8,#00a2ff);
+transform: scale(1.16);
+    transition:0.3s ease; 
+      box-shadow:
+    0 0 22px rgb(255, 255, 255),
+    0 0 22px rgb(255, 255, 255),
+    0 0 22px rgb(255, 255, 255);
+}
+
+.profile-avatar img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+.change-photo{
+    margin-top:25px !important;
+    margin-bottom:2px !important;
+}
+
+.change{
+    margin-top:20px !important;
+}
+
+.change-photo,.change{
+
+    justify-content:center;
+    margin-top:25px;
+    color:#fff;
+    cursor:pointer;
+    font-size:18px;
+    width:45%;
+    padding:5px;
+    outline: 2px solid rgb(99, 99, 99);
+    outline-offset: 1px;
+    background: transparent;
+    border-radius:5px;
+    cursor:pointer;
+    color:white;
+        transition:0.2s ease; 
+
+}
+
+.change-photo:hover{
+      justify-content:center;
+    transform: scale(1.25);
+    border-radius:30px;
+    outline: 2px solid #00ff11;
+    outline-offset: 1px;
+    background: transparent;
+    color: #00ff00;
+    transition:0.2s ease; 
+}
+.change:hover{
+      justify-content:center;
+      transform: scale(1.25);
+    border-radius:30px;
+    outline: 2px solid #ff0000;
+    outline-offset: 1px;
+    background: transparent;
+    color: #ff0000;
+    transition:0.2s ease; 
+    
+
+}
+.logout-btn:hover{
+      justify-content:center;
+      transform: scale(1.2);
+    border-radius:30px;
+    outline: 2px solid #ff0000;
+    outline-offset: 1px;
+    background: transparent;
+    color: #ff0000;
+    transition:0.2s ease; 
+     box-shadow:
+      0 0 5px rgb(255, 1, 1),
+      0 0 5px rgba(255, 1, 1),
+      0 0 5px rgba(255, 1, 1);
+}
+
+.change-photo:active{
+            box-shadow:
+      0 0 15px rgb(60, 255, 1),
+      0 0 15px rgba(60, 255, 1),
+      0 0 15px rgba(60, 255, 1);
+      transform:scale(1.35);
+}
+
+.change:active,.logout-btn:active{
+            box-shadow:
+      0 0 15px rgb(255, 1, 1),
+      0 0 15px rgba(255, 1, 1),
+      0 0 15px rgba(255, 1, 1);
+      transform:scale(1.35);
+}
+
+.logout-btn{
+    width:65%;
+    margin-top:30px;
+     cursor:pointer;
+    font-size:26px;
+    outline: 1.1px solid #ffffff;
+    outline-offset: 1px;
+    background: transparent;
+    border-radius:10px;
+    cursor:pointer;
+    color:white;
+}
+
+
+#userName{
+    margin-top:20px;
+    color:white;
+    font-size:28px;
+    text-align:center;
+}
+
+#userEmail{
+    color:#ccc;
+    margin-top:8px;
+    text-align:center;
+    word-break:break-word;
 }
 
 
 
+
+#logoutText{
+
+    position:absolute;
+
+    inset:0;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:20px;
+
+    letter-spacing:1.5px;
+
+      color:#ffffff;
+
+    opacity:1;
+}
+
+.logout-track{
+    position:relative;
+    width:250px;
+    height:65px;
+    margin-top:50px;
+    border-radius:50px;
+    outline:2px solid rgb(129, 129, 129);
+    overflow:hidden;
+}
+
+.logout-slider{
+    position:absolute;
+    left:0;
+    top:0;
+    width:65px;
+    height:64.8px;
+    border-radius:50px;
+    cursor:grab;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:linear-gradient(
+        135deg,
+        #ff0099,
+        #0084ff);
+}
+
+.logout-slider:hover{
+        
+  background:linear-gradient(315deg,#ff0099,#0084ff);
+
+}
+
+.logout-slider img{
+
+    width:55px;
+    height:55px;
+    right: 5px;
+    pointer-events:none;
+    user-select:none;
+    -webkit-user-drag:none;
+}
+
+.logout-modal{
+
+    position:fixed;
+    inset:0;
+
+    display:none;
+
+    justify-content:center;
+
+    align-items:center;
+
+    background:rgba(255, 255, 255, 0);
+
+    z-index:20000;
+}
+
+.logout-box{
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    top: 0;
+    width:430px;
+    font-weight: lighter;
+
+    font-family: 'Inter', sans-serif;
+
+    padding:40px 10px;
+
+    border-radius:20px;
+
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+
+    border:2px solid rgb(99, 99, 99);
+
+    text-align:center;
     
-    button {
-      margin-top: 20px;
-      background: linear-gradient(180deg,  #ff00ff, #00a2ff);
-      color: rgb(255, 255, 255);
-      padding: 15px;
-      border-radius: 50px;
-      border: none;
-      cursor: pointer;
-      font-size: 25px;
-            box-shadow: 0 10px 99px rgb(0, 8, 255);
-      transition: 0.1s;
-    }
-    button:hover {
-      background: linear-gradient(360deg, #ff00ff, #00a2ff);
-      transform: scale(1.05);
-            box-shadow: 0 1px 20px rgb(255, 255, 255);
+    padding-top: 26px;
 
-transition: 0.1s;
+    z-index:2;
 
-    }
+    opacity:0;
 
- button:active{
+animation: dropCenter 3.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        transition:1.2s ease; 
+}
 
-      transform:scale(1.15);
+.logout-box:hover{
+ box-shadow:
+    0 0 15px rgb(255, 0, 0),
+    0 0 20px rgb(255, 0, 0),
+    0 0 25px rgb(255, 0, 0);
+        transition:.8s ease; 
+}
 
-       color:rgb(30, 255, 0);
+@keyframes dropCenter{
 
-      box-shadow:
-  0 0 10px rgb(60, 255, 0),
-  0 0 10px rgba(60, 255, 0),
-  0 0 10px rgba(60, 255, 0);
+    0%{
 
+        opacity:0;
+
+        transform:
+        translateY(-800px)
+        scale(1);
     }
 
-    .result {
-      text-align: center;
-      font-size: 25px;
-      margin-top: 25px;
-      font-weight: bold;
-      color: #ffffff;
+    100%{
+
+        opacity:1;
+
+        transform:
+        translateY(0)
+        scale(1);
     }
-  </style>
-  <link rel="stylesheet" href="style.css">
+}
+
+
+
+.logout-actions{
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:48px;
+
+    margin-top:15px;
+}
+
+
+
+.change-photo1{
+    margin-top:20px !important;
+    
+}
+.change1{
+    margin-top:20px !important;
+}
+
+.change-photo1,.change1{
+  font-family: 'Inter', sans-serif;
+    margin-top:25px;
+    color:#fff;
+    cursor:pointer;
+    font-size:26px;
+    height: 42px;
+    width:125px;
+    padding:3px;
+    outline: 2px solid rgb(67, 67, 67);
+    outline-offset: 1px;
+    background: transparent;
+    border-radius:8px;
+    cursor:pointer;
+        transition:0.2s ease; 
+
+}
+
+.change-photo1:hover{
+    transform: scale(1.15);
+    border-radius:30px;
+    outline: 2px solid #00ff11;
+    outline-offset: 1px;
+    background: transparent;
+    color: #00ff00;
+    transition:0.2s ease; 
+}
+.change1:hover{
+      transform: scale(1.15);
+    border-radius:30px;
+    outline: 2px solid #ff0000;
+    outline-offset: 1px;
+    background: transparent;
+    color: #ff0000;
+    transition:0.2s ease; 
+
+}
+
+.change-photo1:active{
+            box-shadow:
+      0 0 15px rgb(60, 255, 1),
+      0 0 15px rgba(60, 255, 1),
+      0 0 15px rgba(60, 255, 1);
+      transform:scale(1.3);
+}
+
+.change1:active{
+            box-shadow:
+      0 0 15px rgb(255, 1, 1),
+      0 0 15px rgba(255, 1, 1),
+      0 0 15px rgba(255, 1, 1);
+      transform:scale(1.3);
+}
+
+.logout-cable:hover,.logout-cable1:hover{
+ box-shadow:
+    0 0 15px rgb(0, 255, 255),
+    0 0 20px rgb(0, 255, 255),
+    0 0 25px rgb(0, 255, 255);
+        transition:.6s ease; 
+        border-radius: 10px;
+}
+
+.logout-cable{
+          transition:1.2s ease; 
+
+    position:absolute;
+
+    bottom:0;
+    left:38.5%;
+
+    width:20px;
+    height:267px;
+     border-radius: 0px;
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+
+    border:2px solid rgb(99, 99, 99);
+
+animation: cableDrop 3.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes cableDrop{
+
+   0%{
+
+        opacity:0;
+
+        transform:
+        translateY(400px)
+        scale(1);
+    }
+
+    100%{
+
+        opacity:1;
+
+        transform:
+        translateY(0)
+        scale(1);
+    }
+}
+
+
+.logout-cable1{
+        transition:1.2s ease; 
+    position:absolute;
+
+    bottom: 0;
+    right:38.5%;
+
+     width:20px;
+    height:267px;
+ backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+
+    border:2px solid rgb(99, 99, 99);
+    border-radius: 0px;
+animation: cableDrop1 3.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes cableDrop1{
+
+   0%{
+
+        opacity:0;
+
+        transform:
+        translateY(400px)
+        scale(1);
+    }
+
+    100%{
+
+        opacity:1;
+
+        transform:
+        translateY(0)
+        scale(1);
+    }
+}
+
+.hide-page{
+
+    opacity:0;
+
+    transform:translatey(600px) scale(20);
+
+    pointer-events:none;
+
+    transition:cubic-bezier(0.45, 0.05, 0.95, 0.95) ease;
+}
+
+.logout-track,
+.logout-slider,
+#logoutText{
+    user-select:none;
+    -webkit-user-select:none;
+}
+
+#logoutText{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:8px;
+}
+
+#logoutText span{
+    color:white;
+    font-weight:900;
+    transition:.2s;
+}
+
+.logout-slider{
+
+    transition:
+    transform .1s ease,
+}
+
+@media (max-width:768px){
+
+    body{
+        padding:10px;
+    }
+
+    nav{
+        width:100%;
+        max-width:100%;
+        font-size:24px;
+        margin-top:10px;
+        border-radius:15px 15px 0 0;
+    }
+
+    nav:hover{
+        border-radius:20px;
+    }
+
+    .container{
+        width:100%;
+        max-width:100%;
+        padding:20px 15px;
+        border-radius:0 0 25px 25px;
+        scale:1;
+    }
+
+    .container:hover{
+        transform:scale(1);
+        border-radius:0 0 25px 25px;
+    }
+
+    .foods{
+        flex-direction:column;
+        gap:25px;
+        margin-bottom:20px;
+    }
+
+    .food-box img{
+        width:180px;
+        height:180px;
+        max-width:180px;
+    }
+
+    .food-box1{
+        margin-bottom:0;
+    }
+
+    .food-box1 span{
+        font-size:30px !important;
+    }
+
+    select{
+        width:100%;
+        font-size:16px;
+        padding:12px;
+    }
+
+    button{
+        width:100%;
+        font-size:18px;
+        padding:12px;
+    }
+
+    .loading-text{
+        font-size:38px;
+    }
+
+    #chart{
+        max-height:280px;
+        margin-top:20px;
+    }
+
+    .result{
+        font-size:24px;
+        margin-top:20px;
+        line-height:1.4;
+    }
+
+    .profile-btn{
+        top:12px;
+        right:12px;
+    }
+
+    .top-avatar{
+        width:50px;
+        height:50px;
+        font-size:20px;
+    }
+
+    .profile-panel{
+        width:260px;
+        right:-260px;
+    }
+
+    .profile-avatar{
+        width:110px;
+        height:110px;
+        font-size:40px;
+    }
+
+    #userName{
+        font-size:22px;
+    }
+
+    #userEmail{
+        font-size:14px;
+        padding:0 10px;
+    }
+
+    .change-photo,
+    .change{
+        width:65%;
+        font-size:15px;
+    }
+
+    .logout-track{
+        width:220px;
+        height:58px;
+    }
+
+    .logout-slider{
+        width:58px;
+        height:58px;
+    }
+
+    .logout-slider img{
+        width:46px;
+        height:46px;
+    }
+
+    .logout-box{
+        width:92%;
+        max-width:360px;
+        padding:25px 15px;
+    }
+
+    .logout-box h2{
+        font-size:22px;
+        line-height:1.4;
+    }
+
+    .logout-actions{
+        gap:20px;
+    }
+
+    .change-photo1,
+    .change1{
+        width:110px;
+        font-size:18px;
+        height:40px;
+    }
+
+    .logout-cable,
+    .logout-cable1{
+        display:none;
+    }
+}
+
+@media (max-width:480px){
+
+    .loading-text{
+        font-size:30px;
+    }
+
+    .food-box img{
+        width:150px;
+        height:150px;
+    }
+
+    select{
+        font-size:15px;
+    }
+
+    button{
+        font-size:16px;
+    }
+
+    .result{
+        font-size:20px;
+    }
+
+    .profile-panel{
+        width:240px;
+        right:-240px;
+    }
+
+    .logout-box h2{
+        font-size:18px;
+    }
+
+    .change-photo1,
+    .change1{
+        width:95px;
+        font-size:16px;
+    }
+}
+
+</style>
 </head>
 <body>
-  <nav class="logo">
-  🍽️ NutriCompare 🍛
-</nav>
-  
+  <canvas id="bg"></canvas>
+  <div id="pageContent">
+
+<div class="profile-btn" onclick="toggleProfile()">
+    <div id="topAvatar" class="top-avatar"></div>
+</div>
+
+<div id="profilePanel" class="profile-panel">
+
+    <div id="profileAvatar" class="profile-avatar"></div>
+
+    <h3 id="userName"></h3>
+
+    <p id="userEmail"></p>
+
+    <input
+        type="file"
+        id="profileInput"
+        accept="image/*"
+        hidden>
+
+    <label for="profileInput" class="change-photo">
+        Change Photo
+    </label>
+
+    <div class="change" onclick="removePhoto()">
+        Remove Photo
+    </div>
+
+    <div class="logout-track">
+
+<div id="logoutText">
+    <span>SIGN</span>
+    <span>OUT</span>
+</div>
+
+        <div id="logoutSlider" class="logout-slider">
+
+            <img
+            src="logout.png"
+            draggable="false">
+
+        </div>
+
+    </div>
+
+</div> <!-- profilePanel close -->
+
+<nav class="logo">
+   <p class="loading-text"> NutriCompare </p>
+  </nav>
   <div class="container">
-    
     <div class="foods">
       <div class="food-box">
         <img id="img1" src="https://static.vecteezy.com/system/resources/previews/035/833/474/non_2x/portrait-of-asian-girl-thinking-what-to-eat-choosing-between-cupcake-and-broccoli-vegetables-white-background-photo.jpg" alt="Food 1"/>
@@ -318,9 +1055,11 @@ transition: 0.1s;
           <option value="">  Select Food 1  </option>
         </select>
       </div>
-      <div class="food-box">
-      <span style="font-size:45px; color:white; font-weight:bold;">VS</span>   
-      </div>
+      <div class="food-box1">
+       <span style="font-size:40px; color:white; font-weight:bold; font-family:'Times New Roman', serif;">
+            VS
+      </span>     
+     </div>
       <div class="food-box">
         <img id="img2" src="https://static.vecteezy.com/system/resources/previews/035/828/904/non_2x/portrait-of-asian-girl-thinking-what-to-eat-choosing-between-cupcake-and-broccoli-vegetables-white-background-photo.jpg" alt="Food 2"/>
         <br>
@@ -329,147 +1068,37 @@ transition: 0.1s;
         </select>
       </div>
     </div>
-
     <div style="text-align:center">
       <button onclick="updateChart()">Compare food items</button>
     </div>
+      <canvas id="chart"></canvas>
+      <div class="result" id="resultText" > </div>
+      </div>
+</div>
 
-    <canvas id="chart" height="180"></canvas>
-    <div class="result" id="resultText"></div>
-  </div>
+<div id="logoutModal" class="logout-modal">
+<div class="logout-cable"></div>
+<div class="logout-cable1"></div>
 
-  <script>
-    let foods = {
-      Orange: {vitaminC:80, antioxidants:70, protein:10, fat:5, img:"https://tse4.mm.bing.net/th/id/OIP._fpL6Wo5uc-yHoUrkQEB8gHaFj?pid=Api&h=220&P=0"},
-      Almonds: {vitaminC:10, antioxidants:60, protein:70, fat:40, img:"https://tse2.mm.bing.net/th/id/OIP.S9Cqtt2_Vt3ocdmTyoIr-wHaEw?pid=Api&h=220&P=0"},
-      Burger: {vitaminC:5, antioxidants:10, protein:30, fat:80, img:"https://tse3.mm.bing.net/th/id/OIP.Oj9ppaRfiy0FICs7w-pTtQHaHa?pid=Api&h=220&P=0"},
-      Spinach: {vitaminC:60, antioxidants:80, protein:40, fat:10, img:"https://tse4.mm.bing.net/th/id/OIP.C_YfNbtMM86ry2u3tfihFwHaFj?pid=Api&h=220&P=0"},
-      Apple: {vitaminC:40, antioxidants:50, protein:5, fat:2, img:"https://tse2.mm.bing.net/th?id=OIF.GxU%2fDM4i%2bRw0DYBrujBByA&pid=Api&h=220&P=0"},
-      Carrot: {vitaminC:35, antioxidants:65, protein:10, fat:1, img:"https://tse3.mm.bing.net/th/id/OIP.tr38uLM7QBOLElGJHG88eQHaEi?pid=Api&h=220&P=0"},
-      Pizza: {vitaminC:8, antioxidants:15, protein:25, fat:70, img:"https://tse3.mm.bing.net/th/id/OIP.8UeIFPMYwIErE1ShRYB9QAHaEo?pid=Api&h=220&P=0"},
-      Broccoli: {vitaminC:70, antioxidants:85, protein:30, fat:5, img:"https://tse2.mm.bing.net/th/id/OIP.3k8082immh_-bfqWvkc7KgHaEm?pid=Api&h=220&P=0"},
-      Chips: {vitaminC:2, antioxidants:5, protein:4, fat:85, img:"https://tse2.mm.bing.net/th/id/OIP.qkms5akLjvVAq-R2sv9hkgHaFj?pid=Api&h=220&P=0"},
-      Banana: {vitaminC:25, antioxidants:40, protein:10, fat:2, img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQG7ElBNPs-HbYJJOMHRu7lEmphTn8-52FYKw&s"},
-      Milk: {vitaminC:2, antioxidants:5, protein:60, fat:20, img:"https://cdn.britannica.com/77/200377-050-4326767F/milk-splashing-glass.jpg"},
-      Fish: {vitaminC:5, antioxidants:15, protein:80, fat:30, img:"https://continentalfresh.in/cdn/shop/products/IMG-4902.jpg?v=1612248584"},
-      Chicken: {vitaminC:2, antioxidants:10, protein:85, fat:25, img:"https://www.datocms-assets.com/129288/1734105343-homepage_header.png?auto=format&w=2400&h=1567&fit=crop"},
-      Meat: {vitaminC:2, antioxidants:12, protein:90, fat:40, img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTiWAysLL2VkMYpSvzcYgFP5-6MxW1ur9z15g&s"},
-      Prawns: {vitaminC:10, antioxidants:20, protein:80, fat:15, img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTiWAysLL2VkMYpSvzcYgFP5-6MxW1ur9z15g&s"},
-      Egg: {vitaminC:1, antioxidants:5, protein:70, fat:30, img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQfiO7agvs5Xg3uKg-u0FIahDpYwib8Fj6giA&s"},
-      Cheese: {vitaminC:2, antioxidants:8, protein:60, fat:70, img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTJ8-CCk_Xk2_JubFk84m1PbDg4efSQ83bfXg&s"},
-      PeanutButter: {vitaminC:3, antioxidants:25, protein:75, fat:60, img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRP6tQv4YikqrVtWf6JjSLS5Q3Os-oBV9bFZg&s"},
-      IceCream: {vitaminC:5, antioxidants:10, protein:20, fat:80, img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT532QISWGuf9bHX5Jv333T-bE5tAJTwx6ouQ&s"},
-      Watermelon: {vitaminC:50, antioxidants:60, protein:5, fat:1, img:"https://upload.wikimedia.org/wikipedia/commons/thumb/c/cc/Watermelon_seedless.jpg/250px-Watermelon_seedless.jpg"},
-      Grapes: {vitaminC:40, antioxidants:70, protein:5, fat:1, img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQczLLEOk49Pm-VqWD5euheDp8PbdF2FSoyYQ&s"},
-      Mango: {vitaminC:60, antioxidants:55, protein:5, fat:2, img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ4fYh6jkcSKf2g3fxRoDBtHDOqbBwob9A1oQ&s"},
-      Oats: {vitaminC:2, antioxidants:10, protein:50, fat:10, img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSbWiQ4mListxf41ajEPM7LLcJu4bLRxOUYQg&s"},
-      Rice: {vitaminC:1, antioxidants:5, protein:30, fat:5, img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_a2EsuSBF1V-B3dr6I-t3pDzcsdIpVu_vGw&s"},
-      Bread: {vitaminC:2, antioxidants:8, protein:40, fat:10, img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTgVuo_sYN__UzUkBoVI4C_21Fy8IOqEcPldA&s"}
-    };
+    <div class="logout-box">
 
-   async function populateFoods(){
+        <h2>Are you sure you want to sign out?</h2>
 
-  try{
+        <div class="logout-actions">
 
-    await loadFoodsFromDB();
+            <button class="change-photo1" onclick="closeLogoutModal()">
+                Cancel
+            </button>
 
-  }catch(error){
+            <button class="change1" onclick="confirmLogout()">
+                Sign Out
+            </button>
 
-    console.log("DB Load Failed");
-  }
+        </div>
 
-  Object.keys(foods).forEach(f => {
+    </div>
 
-    const opt1 = document.createElement("option");
-    opt1.value = f;
-    opt1.text = f;
-
-    const opt2 = document.createElement("option");
-    opt2.value = f;
-    opt2.text = f;
-
-    food1.appendChild(opt1);
-    food2.appendChild(opt2);
-  });
-}
-
-populateFoods();
-
-    // Chart.js setup
-    let chart;
-    function updateChart() {
-      if (!food1.value || !food2.value) {
-        alert("⚠️Please select both food items!");
-        return;
-      }
-      img1.src = foods[food1.value].img;
-      img2.src = foods[food2.value].img;
-
-      const data = {
-        labels: ["Vitamin C", "Antioxidants", "Protein", "Fat"],
-        datasets: [
-          {
-            label: food1.value,
-            data: [foods[food1.value].vitaminC, foods[food1.value].antioxidants, foods[food1.value].protein, foods[food1.value].fat],
-            backgroundColor: "rgba(0, 162, 255, 1)",
-            hoverBackgroundColor: "rgba(0, 162, 255, 1)"
-          },
-          {
-            label: food2.value,
-            data: [foods[food2.value].vitaminC, foods[food2.value].antioxidants, foods[food2.value].protein, foods[food2.value].fat],
-            backgroundColor: "rgba(255, 0, 255, 1)",
-            hoverBackgroundColor: "rgba(255, 0, 255, 1)"
-          }
-        ]
-      };
-
-      if (chart) chart.destroy();
-      chart = new Chart(document.getElementById("chart"), {
-        type: "bar",
-        data: data,
-        options: {
-          responsive: true,
-          plugins: {
-            legend: { position: "top" },
-            tooltip: { enabled: true }
-          },
-          scales: {
-
-  x: {
-
-    ticks: {
-
-      color: "white",
-
-      font: {
-        size: 20,      // Bigger text
-        weight: "bold"
-      }
-    }
-  },
-
-  y: {
-
-    beginAtZero: true,
-
-    ticks: {
-
-      color: "white",
-
-      font: {
-        size: 16,
-        weight: "bold"
-      }
-    }
-  }
-}
-        }
-      });
-      const score1 = foods[food1.value].vitaminC + foods[food1.value].antioxidants + foods[food1.value].protein - foods[food1.value].fat;
-      const score2 = foods[food2.value].vitaminC + foods[food2.value].antioxidants + foods[food2.value].protein - foods[food2.value].fat;
-      const best = score1 > score2 ? food1.value : food2.value;
-      resultText.innerHTML = "Best for health ✅:<span style='color:white'>" + best + "</span>";
-    }
-  </script>
+</div>
+<script src="auth.js"></script>
 </body>
 </html>

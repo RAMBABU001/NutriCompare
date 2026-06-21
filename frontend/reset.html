@@ -3,289 +3,642 @@
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Reset Password</title>
-
+  <link rel="icon" href="fav1.png">
+  <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
   <style>
-
     *{
       margin:0;
       padding:0;
       box-sizing:border-box;
     }
-
     body{
-      font-family: Arial, sans-serif;
+    font-family: 'Inter', sans-serif;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    min-height:100vh;
+    overflow:hidden;
+    background:#000000;
+    position:relative;
+}
 
-      display:flex;
-      justify-content:center;
-      align-items:center;
+body::before,
+body::after{
+    content:"";
+    position:absolute;
+    inset:-30%;
+    filter:blur(120px);
+    animation:moveBg 16s ease-in-out infinite alternate;
+}
 
-      min-height:100vh;
+body::before{
+    background:
+    radial-gradient(circle at 20% 20%,
+        #ff00c8 0%,
+        transparent 35%),
 
-      background: linear-gradient(
-        90deg,
-        #ff00ff,
-        #00a2ff,
-        #ff00ff
-      );
+    radial-gradient(circle at 80% 25%,
+        #00a2ff 0%,
+        transparent 40%),
 
-      background-size:800% 800%;
+    radial-gradient(circle at 50% 80%,
+        #ff00c8 0%,
+        transparent 35%);
+}
 
-      animation:flowColors 6s ease-in-out infinite;
+body::after{
+    background:
+    radial-gradient(circle at 75% 75%,
+        #00a2ff 0%,
+        transparent 40%),
+
+    radial-gradient(circle at 15% 70%,
+        #ff00c8 0%,
+        transparent 35%);
+
+    animation-duration:20s;
+    animation-direction:alternate-reverse;
+}
+@keyframes moveBg{
+
+    0%{
+        transform:
+            translate(-5%, -5%)
+            scale(1)
+            rotate(0deg);
     }
 
-    @keyframes flowColors{
-
-      0%{
-        background-position:0% 100%;
-      }
-
-      50%{
-        background-position:100% 50%;
-      }
-
-      100%{
-        background-position:50% 100%;
-      }
+    50%{
+        transform:
+            translate(5%, 3%)
+            scale(1.15)
+            rotate(180deg);
     }
+
+    100%{
+        transform:
+            translate(-3%, 6%)
+            scale(1.3)
+            rotate(360deg);
+    }
+}
 
     .container{
-
+      transform: scale(0.8);
       width:100%;
-
       max-width:400px;
-
-      background:linear-gradient(180deg,#ff00ff,#00a2ff);
-
+      background: linear-gradient(180deg,#ff00c8,#00a2ff);
       padding:35px;
-
       border-radius:40px;
-
-            box-shadow: 0 10px 99px rgb(0, 8, 255);
-
-
+      box-shadow:0 1px 10px rgb(0, 0, 0);
       cursor:pointer;
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+      transition:
+        transform 1.8s cubic-bezier(.22,1,.36,1),
+        box-shadow 1.8s cubic-bezier(.22,1,.36,1),
+        border-radius 1.8s cubic-bezier(.22,1,.36,1);
+}
+      
+    
+    .container::before {
+      content: '';
+      position: absolute;
+      z-index: -2;
+      left: -50%;
+      top: -100%;
+      width: 200%;
+      height: 300%;
+background: conic-gradient(
+    #ffffff 0deg,
+    #ffffff 45deg,
+    #ffffff 90deg,
+    #000000 135deg,
+    #ffffff 180deg,
+    #ffffff 225deg,
+    #ffffff 270deg,
+    #000000 315deg,
+    #ffffff 360deg
+);
 
-      transition:2s ease;
+animation: rotateBorder 4s linear infinite;
+      border-radius: 50%;
+      opacity: 0;
+      transition: opacity 0.2s ease;
     }
 
+        .container::after {
+      content: '';
+      position: absolute;
+      z-index: -1;
+      inset: 4px;
+       background: linear-gradient(180deg, #ff00c8,#00a2ff);
+      border-radius: 36px;
+     
+    }
+    @keyframes rotateBorder {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
     .container:hover{
-
-      transform:translateZ(-90px) scale(2.2);
-
-      background:linear-gradient(360deg,#ff00ff,#00a2ff);
-
-      box-shadow:0 1px 20px rgb(255, 255, 255);
+      border-radius:40px;
+      transform:  scale(1.3);  
+      box-shadow: 0 50px 50px rgb(0, 0, 0);
+      animation:3s auto;
     }
-
+    .container:hover::before {
+      opacity: 1;
+    }
+    .container:hover::after {
+       background: linear-gradient(0deg, #ff00c8,#00a2ff);
+       
+    }
     h2{
-
+      font-family: 'Times New Roman', serif;
       text-align:center;
-
       margin-bottom:25px;
-
       color:#ffffff;
-
-      font-size:38px;
+      font-size:42px;
     }
+
+input::placeholder {
+  color: #000000; 
+  opacity: 1; 
+}
 
     input{
-
       width:100%;
-
       padding:14px;
-
       margin-bottom:18px;
-
       border:none;
-
       outline:none;
-
-      border-radius:30px;
-
+      border-radius:10px;
       font-size:16px;
-
-      background:rgb(255, 255, 255);
-
-      transition:0.2s;
+      background: rgb(255, 255, 255);
+      transition:0.3s;
+      margin-bottom:14px;
     }
 
     input:focus{
-
-      background:white;
-
+       color:rgb(0, 0, 0);
+       border-radius:40px;
+      background:rgb(255, 255, 255);
       transform:scale(1.08);
+      box-shadow: 0 15px 15px rgb(0, 0, 0);
+      outline: 1.5px solid #ffffff;
+      outline-offset: 1.5px;
+      
 
-      box-shadow:0 1px 20px rgb(255,255,255);
+    }
+    button{
+      width:100%;
+      padding:14px;
+      border:none;
+      border-radius:10px;
+      font-size:20px;
+      font-weight:bold;
+      cursor:pointer;
+      color:white;
+      background: linear-gradient(180deg, #ff00c8,#00a2ff);
+      outline: 1.6px solid #ffffff;
+      outline-offset: 1.5px;
+      margin-top:-30px;
+      margin-bottom:8px;
+      transition:0.2s ease; 
+    }
+    button:hover{
+    border-radius:30px;
+    outline: 1.6px solid #00ff11;
+    outline-offset: 1.5px;
+    transform: scale(1.08);  
+    background: linear-gradient(0deg, #ff00c8,#00a2ff);
+    box-shadow: 0 15px 15px rgb(0, 0, 0);
+    color: #00ff11;
+    transition:0.2s ease; 
+}
+    button:active{
+      outline: 4px solid #00ff11;
+      outline-offset: 0px;
+      transform:scale(1.14);
+      color:rgb(60, 255, 1);
+      box-shadow:
+      0 0 15px rgb(60, 255, 1),
+      0 0 15px rgba(60, 255, 1),
+      0 0 15px rgba(60, 255, 1);
+}
+    .login-text{
+      text-align:center;
+      margin-top:18px;
+      margin-bottom:-8px;
+      color:#000000;
+      font-weight:bold;
+    }
+    .login-btn{
+
+      margin-top:5px;
+    }
+ .in{
+      margin-bottom:22px;
+       margin-top: -10px;
+    }
+
+     .password-wrapper {
+      position: relative;
+      width: 100%;
+      margin-bottom: 18px;
+    }
+    
+    .password-wrapper input {
+      width: 100%;
+      padding-right: 50px; 
+    }
+   
+
+   #toggleIcon{
+    position:absolute;
+    right:5px;
+    top:11px;          /* fixed position */
+    width:24px;
+    height:24px;
+    cursor:pointer;
+    z-index:100;
+}
+
+#toggleConfirmIcon{
+    position:absolute;
+    right:5px;
+    top:-2px;
+    width:24px;
+    height:24px;
+    cursor:pointer;
+    transition:.3s;
+    z-index:10;
+}
+#newCross{  position:absolute;
+    right:32px;
+    top:21px;
+    transform:translateY(-50%);
+    width:16px;
+    height:16px;
+    display:none;
+  }
+
+#newTick{  position:absolute;
+    right:28px;
+    top:21px;
+    transform:translateY(-50%);
+    width:28px;
+    height:28px;
+    display:none;
+  }
+#confirmTick{
+    position:absolute;
+    right:28px;
+    top:8px;
+    transform:translateY(-50%);
+    width:28px;
+    height:28px;
+    display:none;
+}
+#confirmCross{
+    position:absolute;
+    right:32px;
+    top:8px;
+    transform:translateY(-50%);
+    width:16px;
+    height:16px;
+    display:none;
+}
+
+#toggleIcon,
+#toggleConfirmIcon{
+    opacity:0;
+    visibility:hidden;
+    transform:translateX(10px);
+    transition:.3s cubic-bezier(0.16,1,0.3,1);
+}
+
+#toggleIcon.show,
+#toggleConfirmIcon.show{
+    opacity:1;
+    visibility:visible;
+    transform:translateX(0);
+}
+
+.password-note {
+    margin-left: 12px;
+    margin-top: -8px;
+    font-size: 12px;
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.5); 
+    letter-spacing: -0.001em; 
+    padding-left: 0px;
+    display: flex;
+    align-items: center;
+}
+ 
+@media (max-width:768px){
+
+    body{
+        padding:20px;
+    }
+
+    .container{
+        width:100%;
+        max-width:380px;
+        padding:28px 22px;
+        border-radius:30px;
+        transform:scale(1);
+    }
+
+     .container:hover{
+        transform:scale(1);
+    }
+
+    .container::after{
+        border-radius:26px;
+    }
+
+    h2{
+        font-size:32px;
+        margin-bottom:20px;
+    }
+
+    input{
+        font-size:16px;
+        padding:13px;
+        margin-bottom:12px;
+    }
+
+    input:focus{
+        transform:scale(1.02);
     }
 
     button{
-
-      width:100%;
-
-      padding:14px;
-
-      border:none;
-
-      border-radius:50px;
-
-      font-size:18px;
-
-      font-weight:bold;
-
-      cursor:pointer;
-
-      color:white;
-
-      background:linear-gradient(180deg, #ff00ff, #00a2ff);
-
-            box-shadow: 0 1px 20px rgb(13, 0, 255);
-
-
-      transition:0.1s ease;
+        font-size:18px;
+        padding:13px;
+        margin-top:-18px;
     }
 
-    button:hover{
-
-      transform:translatez(-20px) scale(1.2);
-
-      background:linear-gradient(360deg,#ff00ff,#00a2ff);
-
-      box-shadow:0 1px 20px rgb(255, 255, 255);
+    .password-note{
+        font-size:11px;
+        margin-left:4px;
+        margin-top:-4px;
+        margin-bottom:8px;
+        line-height:1.4;
     }
-
-     button:active{
-
-      transform:scale(1.15);
-
-       color:rgb(30, 255, 0);
-
-      box-shadow:
-  0 0 10px rgb(60, 255, 0),
-  0 0 10px rgba(60, 255, 0),
-  0 0 10px rgba(60, 255, 0);
-
-    }
-    
 
     .login-text{
-
-      text-align:center;
-
-      margin-top:18px;
-
-      margin-bottom:10px;
-
-      color:#000000;
-
-      font-weight:bold;
+        font-size:14px;
+        margin-top:15px;
+        margin-bottom:0;
     }
 
-    @media(max-width:500px){
+    #toggleIcon{
+        width:22px;
+        height:22px;
+        right:8px;
+        top:12px;
+    }
 
-      .container{
-        padding:25px;
-      }
+    #toggleConfirmIcon{
+        width:22px;
+        height:22px;
+        right:8px;
+        top:0;
+    }
 
-      h2{
+    #newTick,
+    #confirmTick{
+        width:24px;
+        height:24px;
+        right:26px;
+    }
+
+    #newCross,
+    #confirmCross{
+        width:14px;
+        height:14px;
+        right:30px;
+    }
+
+    body::before,
+    body::after{
+        filter:blur(90px);
+    }
+}
+
+@media (max-width:480px){
+
+    .container{
+        max-width:100%;
+        padding:24px 18px;
+        border-radius:25px;
+    }
+
+    h2{
         font-size:28px;
-      }
-
-      input,
-      button{
-        font-size:15px;
-      }
     }
+
+    input{
+        padding:12px;
+        font-size:15px;
+    }
+
+    button{
+        font-size:16px;
+        padding:12px;
+    }
+
+    .password-note{
+        font-size:10px;
+        line-height:1.4;
+    }
+
+    .login-text{
+        font-size:13px;
+    }
+
+    #toggleIcon,
+    #toggleConfirmIcon{
+        width:20px;
+        height:20px;
+    }
+
+    #newTick,
+    #confirmTick{
+        width:22px;
+        height:22px;
+    }
+
+    #newCross,
+    #confirmCross{
+        width:12px;
+        height:12px;
+    }
+}
 
   </style>
 </head>
-
 <body>
-
 <div class="container">
-
   <h2>Reset Password</h2>
-
-  <input
+<div class="password-wrapper">
+<input
     type="password"
     id="newPassword"
     placeholder="Enter New Password"
-  />
+    oninput="this.value=this.value.replace(/\s/g,''); check(); checkPasswords(); handleNewPasswordInput();">
+    <p class="password-note">Password must be at least 6 alphanumeric characters.</p>
+<img src="https://img.icons8.com/nolan/64/closed-eye.png"
+     id="toggleIcon"
+     onclick="toggleNewVisibility()">
 
-  <button onclick="resetPassword()">
-    Update Password
-  </button>
+<img id="newTick"
+     src="tickk.gif"
+     style="display:none;">
 
-  <p class="login-text">
-    Password reset securely
-  </p>
-
+<img id="newCross"
+     src="tick1.gif"
+     style="display:none;">
 </div>
+  <div class="password-wrapper">
+    <input class="in"
+        type="password"
+        id="confirmPassword"
+        placeholder="Confirm Password"
+        oninput="this.value=this.value.replace(/\s/g,''); checkPasswords(); handleConfirmPasswordInput();">
+            
+    <img id="toggleConfirmIcon"
+         src="https://img.icons8.com/nolan/64/closed-eye.png"
+         onclick="toggleConfirmPassword()">
 
+    <img id="confirmTick"
+         src="tickk.gif"
+         style="display:none;">
+
+    <img id="confirmCross"
+         src="tick1.gif"
+         style="display:none;">
+</div>
+  <button onclick="resetPassword()">
+    Reset Password
+  </button>
+  <p class="login-text">
+    Reset Your Password Securely
+  </p>
+</div>
+<script src="auth.js"> </script>
 <script>
 
-async function resetPassword(){
+function check(){
 
-  const params =
-    new URLSearchParams(window.location.search);
+   const password =
+    document.getElementById("newPassword").value.trim();
 
-  const email =
-    params.get("email");
+    const tick =
+    document.getElementById("newTick");
 
-  const password =
-    document.getElementById("newPassword").value;
+    const cross =
+    document.getElementById("newCross");
 
+    const passwordPattern =
+    /^(?=.*[A-Za-z])(?=.*\d).{6,}$/;
 
-  // Empty validation
-  if(password === ""){
+    if(password === ""){
 
-    alert("Please enter password");
+        tick.style.display = "none";
+        cross.style.display = "none";
 
-    return;
-  }
+    }else if(passwordPattern.test(password)){
 
+        tick.style.display = "block";
+        cross.style.display = "none";
 
-  // Strong password validation
-  const passwordPattern =
-  /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/;
+    }else{
 
-  if(!passwordPattern.test(password)){
-
-    alert(
-      "Password must contain alphabets and numbers and be at least 6 characters long"
-    );
-
-    return;
-  }
-
-
-  const res = await fetch(
-    "/reset-password",
-    {
-
-      method:"POST",
-
-      headers:{
-        "Content-Type":"application/json"
-      },
-
-      body:JSON.stringify({
-        email,
-        password
-      })
+        tick.style.display = "none";
+        cross.style.display = "block";
     }
-  );
-
- 
-
-  
-
-  if(res.ok){
-
-    window.location.href = "login.html";
-  }
 }
 
-</script>
 
+function checkPasswords(){
+
+    const password =
+    document.getElementById("newPassword").value.trim();
+
+    const confirmPassword =
+    document.getElementById("confirmPassword").value.trim();
+
+    const tick =
+    document.getElementById("confirmTick");
+
+    const cross =
+    document.getElementById("confirmCross");
+
+    const passwordPattern =
+    /^(?=.*[A-Za-z])(?=.*\d).{6,}$/;
+
+    if(confirmPassword === ""){
+
+        tick.style.display = "none";
+        cross.style.display = "none";
+        return;
+    }
+
+    if(
+        passwordPattern.test(password) &&
+        password === confirmPassword
+    ){
+
+        tick.style.display = "block";
+        cross.style.display = "none";
+
+    }else{
+
+        tick.style.display = "none";
+        cross.style.display = "block";
+    }
+}
+
+function toggleConfirmPassword(){
+    const password =
+    document.getElementById("confirmPassword");
+
+    const eye =
+    document.getElementById("toggleConfirmIcon");
+
+    if(password.type === "password"){
+
+        password.type = "text";
+
+        eye.src =
+        "https://img.icons8.com/nolan/64/visible.png";
+
+    }else{
+
+        password.type = "password";
+
+        eye.src =
+        "https://img.icons8.com/nolan/64/closed-eye.png";
+
+    }
+}
+
+function toggleNewVisibility() {
+    const pwdInput = document.getElementById("newPassword");
+    const icon = document.getElementById("toggleIcon");
+
+    if (pwdInput.type === "password") {
+      pwdInput.type = "text";
+      icon.src = "https://img.icons8.com/nolan/64/visible.png";
+    } else {
+      pwdInput.type = "password";
+      icon.src = "https://img.icons8.com/nolan/64/closed-eye.png";
+    }
+  }
+</script>
 </body>
 </html>

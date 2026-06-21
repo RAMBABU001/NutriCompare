@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="preload" as="image" href="fav1.png">
+<link rel="preload" as="image" href="NCLL1.png">
+<title>NutriCompare-intro</title>
+<link rel="icon" href="fav1.png">
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html, body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: rgb(0, 0, 0);
+    font-family: "Clash Display", sans-serif;  
+    font-weight: 800;
+    letter-spacing: -3px;
+    background-size:400% 400%;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 1;
+}
+
+.scene{
+    position:relative;
+    width:100vw;
+    height:100vh;
+    overflow:hidden;
+
+    backdrop-filter:blur(80px);
+    -webkit-backdrop-filter:blur(80px);
+
+    filter:
+        saturate(1.25)
+        contrast(1.08)
+        brightness(1);
+
+    animation:bgFade 45s cubic-bezier(.22,1,.36,1) forwards;
+
+    isolation:isolate;
+}
+@keyframes bgFade{
+
+    0%{
+        filter:
+            saturate(1.05)
+            contrast(1)
+            brightness(1);
+    }
+
+    50%{
+        filter:
+            saturate(1.18)
+            contrast(1.05)
+            brightness(1.08);
+    }
+
+    100%{
+        filter:
+            saturate(1.3)
+            contrast(1.1)
+            brightness(1.15);
+    }
+}
+
+.scene::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    pointer-events:none;
+
+    background:
+    radial-gradient(
+        circle at 30% 20%,
+        rgba(255,255,255,.12),
+        transparent 25%
+    ),
+    radial-gradient(
+        circle at 70% 80%,
+        rgba(255,255,255,.08),
+        transparent 35%
+    );
+
+    mix-blend-mode:screen;
+
+    animation:glassMove 18s ease-in-out infinite alternate;
+}
+@keyframes glassMove{
+
+    0%{
+        transform:translateX(-3%) translateY(-2%);
+    }
+
+    100%{
+        transform:translateX(3%) translateY(2%);
+    }
+}
+
+.orb1  { animation-delay: 0.02s; }
+.orb2  { animation-delay: 0.05s; }
+.orb3  { animation-delay: 0.12s; }
+.orb4  { animation-delay: 0.20s; }
+.orb5  { animation-delay: 0.30s; }
+.orb6  { animation-delay: 0.42s; }
+.orb7  { animation-delay: 0.55s; }
+.orb8  { animation-delay: 0.70s; }
+.orb9  { animation-delay: 0.87s; }
+.orb10 { animation-delay: 0.90s; }
+.orb11 { animation-delay: 1.05s; }
+.orb12 { animation-delay: 1.22s; }
+.orb13 { animation-delay: 1.40s; }
+.orb14 { animation-delay: 1.60s; }
+.orb15 { animation-delay: 1.82s; }
+
+.orb{
+    position:absolute;
+    left:50%;
+    top:50%;
+    border-radius:50%;
+
+    animation:zoomOrb 42s cubic-bezier(0.22,1,0.36,1) forwards;
+
+    background:
+
+    radial-gradient(
+        circle at 15% 10%,
+        #5ce1ff 0%,
+        transparent 42%
+    ),
+
+    radial-gradient(
+        circle at 85% 25%,
+        #00a2ff 0%,
+        transparent 48%
+    ),
+
+    radial-gradient(
+        circle at 85% 92%,
+        #ff3ac8 0%,
+        transparent 42%
+    ),
+
+    radial-gradient(
+        circle at 20% 90%,
+        #7a00ff 0%,
+        transparent 48%
+    ),
+
+    radial-gradient(
+        circle at 50% 50%,
+        #00aaff 0%,
+        #006aff 55%,
+        #00058d 100%
+    );
+
+}
+
+@keyframes zoomOrb{
+
+    0%{
+        transform:translate(-50%,-50%) scale(0);
+    }
+
+   100%{
+    transform:translate(-50%,-50%) scale(12);
+}
+}
+
+.orb1{
+    width:15vmax;
+    height:15vmax;
+    z-index:15;
+    opacity:1;
+}
+
+.orb2{
+    width:20vmax;
+    height:20vmax;
+    z-index:14;
+    opacity:1;
+}
+
+.orb3{
+    width:25vmax;
+    height:25vmax;
+    z-index:13;
+    opacity:1;
+}
+
+.orb4{
+    width:30vmax;
+    height:30vmax;
+    z-index:12;
+    opacity:1;
+}
+
+.orb5{
+    width:35vmax;
+    height:35vmax;
+    z-index:11;
+    opacity:1;
+}
+
+.orb6{
+    width:40vmax;
+    height:40vmax;
+    z-index:10;
+    opacity:1;
+}
+
+.orb7{
+    width:45vmax;
+    height:45vmax;
+    z-index:9;
+    opacity:1;
+}
+
+.orb8{
+    width:50vmax;
+    height:50vmax;
+    z-index:8;
+    opacity:1;
+}
+
+.orb9{
+    width:55vmax;
+    height:55vmax;
+    z-index:7;
+    opacity:1;
+}
+
+.orb10{
+    width:60vmax;
+    height:60vmax;
+    z-index:6;
+    opacity:1;
+}
+
+.orb11 { width:65vmax; height:65vmax; z-index:5; opacity:1; }
+.orb12 { width:70vmax; height:70vmax; z-index:4; opacity:1; }
+.orb13 { width:75vmax; height:75vmax; z-index:3; opacity:1; }
+.orb14 { width:80vmax; height:80vmax; z-index:2; opacity:1; }
+.orb15 { width:85vmax; height:85vmax; z-index:1; opacity:1; }
+
+.emoji-wrap,
+.logo{
+    will-change: transform, opacity, filter;
+}
+
+.emoji-wrap{
+    position:absolute;
+    left:50%;
+    top:50%;
+    transform:translate(-50%, -120%) scale(0.000001);
+    animation: emojiZoom 7.8s cubic-bezier(0.16, 1, 0.36, 1) forwards;
+    z-index:999;
+}
+.logo{
+    position:absolute;
+    left:50%;
+    top:50%;
+    transform:translate(-50%,100%) scale(0.01);
+    animation: logoReveal 7.8s cubic-bezier(0.16, 1, 0.36, 1) forwards;
+    z-index:999;
+}
+
+.emoji-wrap img{
+     filter: drop-shadow(0 0 0 rgba(0,0,0,0)) brightness(1);
+     animation: logoGlow 7.8s ease-out forwards;
+}
+
+.logo img{
+    width:600px;
+    height:auto;
+    display:block;
+    filter: drop-shadow(0 0 0 rgba(0,0,0,0)) brightness(1);
+    animation: logoGlow 7.8s ease-out forwards;
+}
+
+@keyframes emojiZoom {
+
+    0%{
+        transform:translate(-50%, -120%) scale(0.000001);
+        opacity:1;
+        filter:blur(14px);
+    }
+
+    20%{
+        transform:translate(-50%, -50%) scale(1.01);
+        opacity:1;
+        filter:blur(10px);
+    }
+
+    40%{
+        transform:translate(-50%, -50%) scale(0.68);
+        opacity:1;
+        filter:blur(6.5px);
+    }
+
+    60%{
+        transform:translate(-50%, -78%) scale(0.6);
+        opacity:1;
+    }
+
+    80%{
+        transform:translate(-50%, -70%) scale(0.5);
+        opacity:1;
+    }
+
+    100%{
+        transform:translate(-50%, -70%) scale(0.5);
+        opacity:0;
+    }
+}
+
+
+@keyframes logoReveal {
+
+    0%{
+        opacity:1;
+        transform:translate(-50%,100%) scale(0.01);
+        filter:blur(25px);
+    }
+
+    20%{
+        opacity:1;
+        transform:translate(-50%,-50%) scale(2.3);
+        filter:blur(0px);
+    }
+
+    40%{
+        opacity:1;
+        transform:translate(-50%,-50%) scale(1.8);
+        filter:blur(0);
+    }
+
+    60%{
+        opacity:1;
+        transform:translate(-50%,18%) scale(1.75);
+        filter:blur(0);
+    }
+
+    80%{
+        opacity:1;
+        transform:translate(-50%,-18%) scale(1.6);
+        filter:blur(0px);
+    }
+
+    100%{
+        opacity:0;
+        transform:translate(-50%,-18%) scale(1.6);
+        filter:blur(0px);
+    }
+}
+
+@keyframes logoGlow {
+    0%{
+        filter: drop-shadow(0 0 0 rgba(0,0,0,0)) brightness(.8);
+    }
+    18%{
+        filter: drop-shadow(0 8px 16px rgba(0,0,0,0.06)) brightness(1.08);
+    }
+    26%{
+        filter: drop-shadow(0 10px 22px rgba(0,0,0,0.12)) brightness(1.12);
+    }
+    35%{
+        filter: drop-shadow(0 12px 28px rgba(0,0,0,0.16)) brightness(1.14);
+    }
+    70%{
+        filter: drop-shadow(0 12px 28px rgba(0,0,0,0.16)) brightness(1.16);
+    }
+    100%{
+        filter: drop-shadow(0 12px 28px rgba(0,0,0,0)) brightness(1.2);
+    }
+}
+
+@media (max-width:768px){
+
+    .logo img{
+        width:85vw;
+        max-width:380px;
+    }
+
+    .emoji-wrap img{
+        width:28vw;
+        max-width:120px;
+        height:auto;
+    }
+
+    .scene{
+        backdrop-filter:blur(55px);
+        -webkit-backdrop-filter:blur(55px);
+    }
+
+    .orb1{ width:12vmax; height:12vmax; }
+    .orb2{ width:16vmax; height:16vmax; }
+    .orb3{ width:20vmax; height:20vmax; }
+    .orb4{ width:24vmax; height:24vmax; }
+    .orb5{ width:28vmax; height:28vmax; }
+    .orb6{ width:32vmax; height:32vmax; }
+    .orb7{ width:36vmax; height:36vmax; }
+    .orb8{ width:40vmax; height:40vmax; }
+    .orb9{ width:44vmax; height:44vmax; }
+    .orb10{ width:48vmax; height:48vmax; }
+    .orb11{ width:52vmax; height:52vmax; }
+    .orb12{ width:56vmax; height:56vmax; }
+    .orb13{ width:60vmax; height:60vmax; }
+    .orb14{ width:64vmax; height:64vmax; }
+    .orb15{ width:68vmax; height:68vmax; }
+
+    @keyframes emojiZoom{
+
+        0%{
+            transform:translate(-50%,-120%) scale(0.000001);
+            opacity:1;
+        }
+
+        20%{
+            transform:translate(-50%,-50%) scale(.75);
+            opacity:1;
+        }
+
+        40%{
+            transform:translate(-50%,-50%) scale(.52);
+            opacity:1;
+        }
+
+        60%{
+            transform:translate(-50%,-75%) scale(.45);
+            opacity:1;
+        }
+
+        80%{
+            transform:translate(-50%,-68%) scale(.38);
+            opacity:1;
+        }
+
+        100%{
+            transform:translate(-50%,-68%) scale(.38);
+            opacity:0;
+        }
+    }
+
+    @keyframes logoReveal{
+
+        0%{
+            opacity:1;
+            transform:translate(-50%,100%) scale(.01);
+        }
+
+        20%{
+            opacity:1;
+            transform:translate(-50%,-50%) scale(1.7);
+        }
+
+        40%{
+            opacity:1;
+            transform:translate(-50%,-50%) scale(1.35);
+        }
+
+        60%{
+            opacity:1;
+            transform:translate(-50%,12%) scale(1.28);
+        }
+
+        80%{
+            opacity:1;
+            transform:translate(-50%,-18%) scale(1.18);
+        }
+
+        100%{
+            opacity:0;
+            transform:translate(-50%,-18%) scale(1.18);
+        }
+    }
+}
+
+@media (max-width:480px){
+
+    .logo img{
+        width:92vw;
+        max-width:320px;
+    }
+
+    .emoji-wrap img{
+        width:32vw;
+        max-width:95px;
+        height:auto;
+    }
+
+    .scene{
+        backdrop-filter:blur(40px);
+        -webkit-backdrop-filter:blur(40px);
+    }
+
+    .orb1{ width:10vmax; height:10vmax; }
+    .orb2{ width:14vmax; height:14vmax; }
+    .orb3{ width:18vmax; height:18vmax; }
+    .orb4{ width:22vmax; height:22vmax; }
+    .orb5{ width:26vmax; height:26vmax; }
+    .orb6{ width:30vmax; height:30vmax; }
+    .orb7{ width:34vmax; height:34vmax; }
+    .orb8{ width:38vmax; height:38vmax; }
+    .orb9{ width:42vmax; height:42vmax; }
+    .orb10{ width:46vmax; height:46vmax; }
+    .orb11{ width:50vmax; height:50vmax; }
+    .orb12{ width:54vmax; height:54vmax; }
+    .orb13{ width:58vmax; height:58vmax; }
+    .orb14{ width:62vmax; height:62vmax; }
+    .orb15{ width:66vmax; height:66vmax; }
+
+    @keyframes emojiZoom{
+
+        0%{
+            transform:translate(-50%,-120%) scale(0.000001);
+            opacity:1;
+        }
+
+        20%{
+            transform:translate(-50%,-50%) scale(.62);
+            opacity:1;
+        }
+
+        40%{
+            transform:translate(-50%,-50%) scale(.45);
+            opacity:1;
+        }
+
+        60%{
+            transform:translate(-50%,-74%) scale(.38);
+            opacity:1;
+        }
+
+        80%{
+            transform:translate(-50%,-68%) scale(.32);
+            opacity:1;
+        }
+
+        100%{
+            transform:translate(-50%,-68%) scale(.32);
+            opacity:0;
+        }
+    }
+
+    @keyframes logoReveal{
+
+        0%{
+            opacity:1;
+            transform:translate(-50%,100%) scale(.01);
+        }
+
+        20%{
+            opacity:1;
+            transform:translate(-50%,-50%) scale(1.35);
+        }
+
+        40%{
+            opacity:1;
+            transform:translate(-50%,-50%) scale(1.12);
+        }
+
+        60%{
+            opacity:1;
+            transform:translate(-50%,10%) scale(1.08);
+        }
+
+        80%{
+            opacity:1;
+            transform:translate(-50%,-18%) scale(1);
+        }
+
+        100%{
+            opacity:0;
+            transform:translate(-50%,-18%) scale(1);
+        }
+    }
+}
+
+</style>
+</head>
+<body>
+
+<div class="scene">
+    <div class="orb orb1"></div>
+    <div class="orb orb2"></div>
+    <div class="orb orb3"></div>
+    <div class="orb orb4"></div>
+    <div class="orb orb5"></div>
+    <div class="orb orb6"></div>
+    <div class="orb orb7"></div>
+    <div class="orb orb8"></div>
+    <div class="orb orb9"></div>
+    <div class="orb orb10"></div>
+    <div class="orb orb11"></div>
+    <div class="orb orb12"></div>
+    <div class="orb orb13"></div>
+    <div class="orb orb14"></div>
+    <div class="orb orb15"></div>
+
+
+    <div class="emoji-wrap">
+         <img src="fav1.png" alt="Emoji" class="emoji">
+    </div>
+    <div class="logo">
+         <img src="NCLL1.png" alt="Logo">
+    </div>
+</div>
+
+<script>
+window.addEventListener("load", () => {
+
+    Promise.all([
+        new Promise(resolve => {
+            const img = new Image();
+            img.src = "fav1.png";
+            img.onload = resolve;
+        }),
+        new Promise(resolve => {
+            const img = new Image();
+            img.src = "NCLL1.png";
+            img.onload = resolve;
+        })
+    ]).then(() => {
+
+        setTimeout(() => {
+            window.location.href = "./signup.html";
+        }, 7200);
+
+    });
+});
+</script>
+</body>
+</html>

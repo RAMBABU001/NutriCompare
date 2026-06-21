@@ -3,355 +3,449 @@
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Forgot Password</title>
-
+  <link rel="icon" href="fav1.png">
+<link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
   <style>
-
     *{
       margin:0;
       padding:0;
       box-sizing:border-box;
     }
+     body{
+    font-family: 'Inter', sans-serif;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    min-height:100vh;
+    overflow:hidden;
+    background:#000000;
+    position:relative;
+}
 
-    body{
+body::before,
+body::after{
+    content:"";
+    position:absolute;
+    inset:-30%;
+    filter:blur(120px);
+    animation:moveBg 16s ease-in-out infinite alternate;
+}
 
-      font-family:Arial,sans-serif;
+body::before{
+    background:
+    radial-gradient(circle at 20% 20%,
+        #ff00c8 0%,
+        transparent 35%),
 
-      display:flex;
-      justify-content:center;
-      align-items:center;
+    radial-gradient(circle at 80% 25%,
+        #00a2ff 0%,
+        transparent 40%),
 
-      min-height:100vh;
+    radial-gradient(circle at 50% 80%,
+        #ff00c8 0%,
+        transparent 35%);
+}
 
-      background:linear-gradient(
-        90deg,
-        #ff00ff,
-        #00a2ff,
-        #ff00ff
-      );
+body::after{
+    background:
+    radial-gradient(circle at 75% 75%,
+        #00a2ff 0%,
+        transparent 40%),
 
-      background-size:800% 800%;
+    radial-gradient(circle at 15% 70%,
+        #ff00c8 0%,
+        transparent 35%);
 
-      animation:bg 6s ease-in-out infinite;
+    animation-duration:20s;
+    animation-direction:alternate-reverse;
+}
+@keyframes moveBg{
+
+    0%{
+        transform:
+            translate(-5%, -5%)
+            scale(1)
+            rotate(0deg);
     }
 
-    @keyframes bg{
-
-      0%{
-        background-position:0% 50%;
-      }
-
-      50%{
-        background-position:100% 50%;
-      }
-
-      100%{
-        background-position:0% 50%;
-      }
+    50%{
+        transform:
+            translate(5%, 3%)
+            scale(1.15)
+            rotate(180deg);
     }
 
-    .box{
+    100%{
+        transform:
+            translate(-3%, 6%)
+            scale(1.3)
+            rotate(360deg);
+    }
+}
 
+    .container{
+                  transform: scale(0.8);
       width:100%;
       max-width:400px;
-
+      background: linear-gradient(180deg,#ff00c8,#00a2ff);
       padding:35px;
-
       border-radius:40px;
-
-      background:linear-gradient(
-        180deg,
-        #ff00ff,
-        #00a2ff
-      );
-
-      box-shadow: 0 10px 99px rgb(0, 8, 255);
-
+      box-shadow:0 1px 10px rgb(0, 0, 0);
       cursor:pointer;
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+      transition:
+        transform 1.8s cubic-bezier(.22,1,.36,1),
+        box-shadow 1.8s cubic-bezier(.22,1,.36,1),
+        border-radius 1.8s cubic-bezier(.22,1,.36,1);
+}
+      
+    
+    .container::before {
+      content: '';
+      position: absolute;
+      z-index: -2;
+      left: -50%;
+      top: -100%;
+      width: 200%;
+      height: 300%;
+background: conic-gradient(
+    #ffffff 0deg,
+    #ffffff 45deg,
+    #ffffff 90deg,
+    #000000 135deg,
+    #ffffff 180deg,
+    #ffffff 225deg,
+    #ffffff 270deg,
+    #000000 315deg,
+    #ffffff 360deg
+);
 
-      transition:2s ease;
+animation: rotateBorder 4s linear infinite;
+      border-radius: 50%;
+      opacity: 0;
+      transition: opacity 0.2s ease;
     }
 
-    .box:hover{
-
-      transform:translateZ(-80px) scale(1.32);
-
-      background:linear-gradient(
-        360deg,
-        #ff00ff,
-        #00a2ff
-      );
-
-      box-shadow:0 1px 20px rgb(255,255,255);
+        .container::after {
+      content: '';
+      position: absolute;
+      z-index: -1;
+      inset: 4px;
+       background: linear-gradient(180deg, #ff00c8,#00a2ff);
+      border-radius: 36px;
+     
     }
-
+    @keyframes rotateBorder {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    .container:hover{
+      border-radius:40px;
+      transform:  scale(1.13);  
+      box-shadow: 0 50px 50px rgb(0, 0, 0);
+      animation:3s auto;
+    }
+    .container:hover::before {
+      opacity: 1;
+    }
+    .container:hover::after {
+       background: linear-gradient(0deg, #ff00c8,#00a2ff);
+       
+    }
     h2{
-
-      color:white;
-
-      margin-bottom:20px;
-
+      font-family: 'Times New Roman', serif;
       text-align:center;
-
-      font-size:40px;
+      margin-bottom:25px;
+      color:#ffffff;
+      font-size:42px;
     }
+
+input::placeholder {
+  color: #000000; 
+  opacity: 1; 
+}
 
     input{
-
       width:100%;
-
       padding:14px;
-
-      margin-top:15px;
-
+      margin-bottom:18px;
       border:none;
-
-      border-radius:30px;
-
       outline:none;
-
-      font-size:17px;
-
-      background:rgb(255, 255, 255);
-
-      transition:0.2s;
+      border-radius:10px;
+      font-size:16px;
+      background: rgb(255, 255, 255);
+      transition:0.3s;
+      
     }
 
     input:focus{
-
-      background:white;
-
+       color:rgb(0, 0, 0);
+       border-radius:40px;
+      background:rgb(255, 255, 255);
       transform:scale(1.08);
+      box-shadow: 0 15px 15px rgb(0, 0, 0);
+      outline: 1.5px solid #ffffff;
+      outline-offset: 1.5px;
+      
 
-      box-shadow:0 1px 20px rgb(255,255,255);
+    }
+    button{
+      width:100%;
+      padding:14px;
+      border:none;
+      border-radius:10px;
+      font-size:18px;
+      font-weight:bold;
+      cursor:pointer;
+      color:white;
+      background: linear-gradient(180deg, #ff00c8,#00a2ff);
+      outline: 1.6px solid #ffffff;
+      outline-offset: 1.5px;
+      transition:0.2s ease; 
+    }
+    button:hover{
+    border-radius:30px;
+    outline: 1.6px solid #00ff11;
+    outline-offset: 1.5px;
+    transform: scale(1.08);  
+    background: linear-gradient(0deg, #ff00c8,#00a2ff);
+    box-shadow: 0 15px 15px rgb(0, 0, 0);
+    color: #00ff11;
+    transition:0.2s ease; 
+}
+    button:active{
+      outline: 4px solid #00ff11;
+      outline-offset: 0px;
+      transform:scale(1.14);
+      color:rgb(60, 255, 1);
+      box-shadow:
+      0 0 15px rgb(60, 255, 1),
+      0 0 15px rgba(60, 255, 1),
+      0 0 15px rgba(60, 255, 1);
+}
+    .login-text{
+      font-family: 'Inter', sans-serif;
+      text-align:center;
+      margin-top:25px;
+      margin-bottom:-5px;
+      color:#000000;
+      font-weight:bold;
+    }
+
+    .signup-btn{
+      font-size: 20px;
+      margin-bottom:20px;
+    }
+   @keyframes shake{
+  0%,100%{margin-left:0;}
+  25%{margin-left:-8px;}
+  50%{margin-left:8px;}
+  75%{margin-left:-8px;}
+}
+
+.otp-error{
+    position:relative;
+    animation:shake .35s ease;
+     box-shadow:
+        0 0 10px #ff0000,
+        0 0 20px #ff0000;
+}
+
+   .otp-wrapper{
+    position:relative;
+    width:100%;
+    margin-bottom:18px;
+}
+
+.otp{
+    width:100%;
+    padding-right:50px;
+    margin-top:20px;
+    margin-bottom:13px;
+}
+.verify{
+    margin-top:-20px;
+    font-size: 20px;
+}
+
+#tickIcon{
+    position:absolute;
+    right:6px;
+    top:54%;
+    transform:translateY(-50%);
+    width:28px;
+    height:28px;
+    display:none;
+    z-index:100;
+}
+#tickIcon1{
+    position:absolute;
+    right:8px;
+    top:54%;
+    transform:translateY(-50%);
+    width:16px;
+    height:16px;
+    display:none;
+    z-index:100;
+}
+
+@media (max-width:768px){
+
+    body{
+        padding:20px;
+    }
+
+    .container{
+        width:100%;
+        max-width:380px;
+        padding:28px 22px;
+        border-radius:30px;
+        transform:scale(1);
+    }
+
+    .container::after{
+        border-radius:26px;
+    }
+
+    h2{
+        font-size:32px;
+        margin-bottom:20px;
+    }
+
+    input{
+        font-size:16px;
+        padding:13px;
+        margin-bottom:15px;
+    }
+
+    input:focus{
+        transform:scale(1.02);
     }
 
     button{
-
-      width:100%;
-
-      margin-top:20px;
-
-      padding:14px;
-
-      border:none;
-
-      border-radius:50px;
-
-      cursor:pointer;
-
-      color:white;
-
-      font-size:18px;
-
-      font-weight:bold;
-
-      background:linear-gradient(
-        180deg,
-         #ff00ff, #00a2ff
-      );
-
-            box-shadow: 0 10px 99px rgb(0, 8, 255);
-
-
-      transition:0.1s ease;
+        font-size:17px;
+        padding:13px;
     }
 
-    button:hover{
-
-       transform:translatez(-40px) scale(1.1);
-
-        background: linear-gradient(360deg, #ff00ff, #00a2ff);
-
-box-shadow:
-  0 0 10px rgba(255, 255, 255),
-  0 0 10px rgba(255, 255, 255),
-  0 0 10px rgb(255, 255, 255);
-
-
-
+    .signup-btn{
+        font-size:18px;
+        margin-bottom:15px;
     }
 
-    button:active{
-
-      transform:scale(1.15);
-
-       color:rgb(30, 255, 0);
-
-      box-shadow:
-  0 0 10px rgb(60, 255, 0),
-  0 0 10px rgba(60, 255, 0),
-  0 0 10px rgba(60, 255, 0);
-
+    .verify{
+        font-size:18px;
+        margin-top:-10px;
     }
 
-    .info-text{
-
-      text-align:center;
-
-      margin-top:18px;
-
-      color:#000000;
-
-      font-weight:bold;
-
-      font-size:16px;
+    .otp{
+        margin-top:15px;
+        margin-bottom:10px;
     }
 
-    @media(max-width:500px){
+    .login-text{
+        font-size:14px;
+        margin-top:20px;
+        margin-bottom:0;
+        line-height:1.4;
+    }
 
-      .box{
-        padding:25px;
-      }
+    #tickIcon{
+        width:24px;
+        height:24px;
+        right:8px;
+    }
 
-      h2{
-        font-size:30px;
-      }
+    #tickIcon1{
+        width:14px;
+        height:14px;
+        right:10px;
+    }
 
-      input,
-      button{
+    body::before,
+    body::after{
+        filter:blur(90px);
+    }
+}
+
+@media (max-width:480px){
+
+    .container{
+        max-width:100%;
+        padding:24px 18px;
+        border-radius:25px;
+    }
+
+    h2{
+        font-size:28px;
+    }
+
+    input{
+        padding:12px;
         font-size:15px;
-      }
     }
 
+    button{
+        padding:12px;
+        font-size:16px;
+    }
+
+    .signup-btn,
+    .verify{
+        font-size:17px;
+    }
+
+    .login-text{
+        font-size:13px;
+    }
+
+    #tickIcon{
+        width:22px;
+        height:22px;
+    }
+
+    #tickIcon1{
+        width:12px;
+        height:12px;
+    }
+}
   </style>
 </head>
-
 <body>
-
-<div class="box">
-
+<div class="container">
   <h2>Forgot Password</h2>
-
-  <input
-    type="email"
-    id="email"
-    placeholder="Enter Email"
-  >
-
-  <button onclick="sendOTP()">
+  <input type="email" id="email" placeholder="Enter Email" oninput="this.value=this.value.replace(/\s/g,'')">
+  <button class="signup-btn" onclick="sendOTP()">
     Send OTP
   </button>
+ <div class="otp-wrapper">
 
-  <input
-    type="text"
-    id="otp"
-    placeholder="Enter 4 Digit OTP"
-    maxlength="4"
-    inputmode="numeric"
-    pattern="[0-9]*"
-    oninput="this.value=this.value.replace(/[^0-9]/g,'')"
-  >
+    <input class="otp"
+           type="text"
+           id="otp"
+           placeholder="Enter OTP"
+           maxlength="4"
+           inputmode="numeric"
+           pattern="[0-9]*"
+           oninput="this.value=this.value.replace(/[^0-9]/g,'')">
 
-  <button onclick="verifyOTP()">
-    Verify OTP
-  </button>
+    <img id="tickIcon"
+         src="tickk.gif"
+         style="display:none;">
 
-  <button onclick="sendOTP()">
-    Resend OTP
-  </button>
-
-  <p class="info-text">
-    OTP will be sent securely to your Email
-  </p>
+    <img id="tickIcon1"
+         src="tick1.gif"
+         style="display:none;">
 
 </div>
-
-<script>
-
-async function sendOTP(){
-
-  const email =
-    document.getElementById("email").value;
-
-  if(email === ""){
-
-    alert("Enter Email");
-
-    return;
-  }
-
-  const emailPattern =
-/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[A-Za-z]{2,}$/;
-
-if(!emailPattern.test(email)){
-
-  alert("Enter valid Email");
-
-  return;
-}
-
-  const res = await fetch(
-    "/send-otp",
-    {
-
-      method:"POST",
-
-      headers:{
-        "Content-Type":"application/json"
-      },
-
-      body:JSON.stringify({ email })
-    }
-  );
-
-  const result = await res.json();
-
-  alert(result.message);
-}
-
-
-
-async function verifyOTP(){
-  
- const otp =
-    document.getElementById("otp").value;
-
-  if(otp === ""){
-
-    alert("Enter OTP");
-
-    return;
-  }
-
-  if(!/^\d{4}$/.test(otp)){
-
-    alert("OTP must contain only 4 numbers");
-
-    return;
-  }
-
-  const email =
-    document.getElementById("email").value;
-
-  const res = await fetch(
-    "/verify-otp",
-    {
-
-      method:"POST",
-
-      headers:{
-        "Content-Type":"application/json"
-      },
-
-      body:JSON.stringify({ otp })
-    }
-  );
-
-  const result = await res.json();
-
-  if(result.success){
-
-    
-    window.location.href =
-      "reset.html?email=" + email;
-
-  }else{
-
-    alert("Invalid OTP");
-  }
-}
-
-</script>
-
+  <button class="verify"onclick="verifyOTP()">
+    Verify OTP
+  </button>
+  <p class="login-text">
+    OTP will be sent securely to your email
+  </p>
+</div>
+<script src="auth.js"> </script>
 </body>
 </html>
