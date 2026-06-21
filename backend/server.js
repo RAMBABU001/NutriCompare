@@ -61,14 +61,46 @@ app.post("/send-otp", async (req, res) => {
 },
 
         to: [
-          {
-            email: email
-          }
-        ],
+  {
+    email: email
+  }
+],
 
-        subject: "NutriCompare - Password Reset OTP",
+subject: "NutriCompare - Password Reset OTP",
 
-        textContent: `Your OTP is ${savedOTP}`
+textContent: `Your OTP is ${savedOTP}`,
+
+htmlContent: `
+<div style="
+    text-align:center;
+    font-family:Arial,sans-serif;
+    margin:0;
+    padding:0;
+">
+
+  <img
+    src="https://raw.githubusercontent.com/RAMBABU001/NutriCompare/main/frontend/NCLL1.png"
+    width="260"
+    alt="NutriCompare Logo">
+
+
+  <p style="
+      margin:10px 0 0 0;
+      padding:0;
+  ">
+      Your Password Reset OTP is:
+  </p>
+
+  <h1 style="
+      margin:10px 0 0 0;
+      letter-spacing:5px;
+      color:#00a2ff;
+  ">
+      ${savedOTP}
+  </h1>
+
+</div>
+`
       },
 
       {
