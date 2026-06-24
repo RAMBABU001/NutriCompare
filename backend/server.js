@@ -68,37 +68,113 @@ app.post("/send-otp", async (req, res) => {
 
 subject: "NutriCompare - Password Reset OTP",
 
-textContent: `Your OTP is ${savedOTP}`,
+textContent: "Use this OTP to securely reset your password.",
 
 htmlContent: `
 <div style="
+    background:linear-gradient(
+        180deg,
+        transparent,
+        #ff00c8 0%,
+        #d300ff 35%,
+        #7a4dff 55%,
+        #00a2ff 100%,
+        transparent
+    );
+    border-radius:22px;
+    font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+    padding:3.5px;
     text-align:center;
-    font-family:Arial,sans-serif;
-    margin:0;
-    padding:0;
 ">
 
-  <img
-    src="https://raw.githubusercontent.com/RAMBABU001/NutriCompare/main/frontend/NCLL1.png"
-    width="260"
-    alt="NutriCompare Logo">
+    <div style="
+        max-width:440px;
+        margin:0px auto;
+        border-radius:20px;
+        padding:35px 20px;
+        background:#000000;
+        border:2px solid #ffffff;
+    ">
 
+        <img
+            src="https://raw.githubusercontent.com/RAMBABU001/NutriCompare/main/frontend/fav1.png"
+            width="110"
+            alt="NutriCompare"
+            style="
+                display:block;
+                margin:0px auto 0px auto;
+            ">
 
-  <p style="
-      margin:10px 0 0 0;
-      padding:0;
-  ">
-      Your Password Reset OTP is:
-  </p>
+        <img
+            src="https://raw.githubusercontent.com/RAMBABU001/NutriCompare/main/frontend/mail.png"
+            width="320"
+            alt="NutriCompare"
+            style="
+                display:block;
+                margin:0px auto 10px auto;
+            ">
 
-  <h1 style="
-      margin:10px 0 0 0;
-      letter-spacing:5px;
-      color:#00a2ff;
-  ">
-      ${savedOTP}
-  </h1>
+        <h1 style="
+            color:#ffffff;
+            font-size:26px;
+            font-weight:600;
+            margin:0 0 18px 0;
+        ">
+            Reset your password
+        </h1>
 
+        <p style="
+            color:#ffffff;
+            font-size:16px;
+            margin:24px 0 6px 0;
+        ">
+            Your code is
+        </p>
+
+        <div style="
+            display:inline-block;
+            padding:12px 16px;
+            border-radius:14px;
+            background:linear-gradient(
+                180deg,
+                rgb(80,80,80),
+                rgb(50,50,50)
+            );
+            border:3.5px solid #00ff00;
+            margin-bottom:44px;
+        ">
+
+            <span style="
+                color:#00eeff;
+                font-size:40px;
+                font-weight:800;
+                letter-spacing:6px;
+                display:block;
+                text-align:center;
+                line-height:1;
+                width:100%;
+                ">
+                ${savedOTP}
+            </span>
+
+        </div>
+
+        <div style="
+            width:300px;
+            height:3.8px;
+            margin:0 auto 10px auto;
+            background:linear-gradient(
+                90deg,
+                transparent,
+                #ff00c8,
+                #00a2ff,
+                #ff00c8,
+                transparent
+            );
+        ">
+        </div>
+
+    </div>
 </div>
 `
       },
