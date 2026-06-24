@@ -1,110 +1,77 @@
-# 🍽️ NutriCompare 🍛
+# NutriCompare
 
-NutriCompare is a full-stack food nutrition comparison web application where users can compare food items based on nutritional values like Vitamin C, Antioxidants, Protein, and Fat.
-
-The application also includes:
-
-* User Authentication
-* Forgot Password with OTP Verification
-* MongoDB Database Integration
-* Dynamic Food Management
+NutriCompare is a modern web application that helps users compare the nutritional values of different food items instantly. The platform provides visual comparisons through interactive charts, making it easier to understand which food offers better nutritional benefits.
 
 ---
 
-# 🚀 Features
+# ✨ Features
 
-## 👤 User Features
+- 🔐 User Authentication System
+  - Signup
+  - Login
+  - Forgot Password
+  - Secure OTP Verification
+  - Password Reset
 
-* Signup & Login
-* Email Validation
-* Strong Password Validation
-* Forgot Password using OTP
-* Reset Password
-* Compare Two Food Items
-* Beautiful Responsive UI
-* Nutrition Chart Comparison
+- 📊 Food Nutrition Comparison
+  - Compare two food items side-by-side
+  - Interactive Chart.js visualization
+  - Instant comparison results
+
+- 📈 Nutritional Analysis
+  - Protein
+  - Fat
+  - Fiber
+  - Carbohydrates
+  - Calcium
+
+- 👤 User Profile System
+  - Upload Profile Photo
+  - Remove Profile Photo
+  - Personalized Avatar
+  - Secure Sign Out
+
+- 📱 Fully Responsive Design
+  - Desktop Friendly
+  - Tablet Friendly
+  - Mobile Friendly
+
+- 🎨 Premium UI/UX
+  - Animated Intro Screen
+  - Gradient Effects
+  - Glassmorphism Elements
+  - Interactive Hover Effects
+  - Modern Authentication Pages
 
 ---
 
-## 🔐 Authentication Features
-
-* Token Authentication
-* Protected Routes
-* Password Hashing using bcrypt
-
----
-
-# 🧑‍💻 Tech Stack
+# 🛠️ Technologies Used
 
 ## Frontend
 
-* HTML
-* CSS
-* JavaScript
-* Chart.js
+- HTML
+- CSS
+- JavaScript
+- Chart.js
 
 ## Backend
 
-* Node.js
-* Express.js
-* MongoDB Atlas
-* Mongoose
-* bcryptjs
-* Nodemailer
+- Node.js
+- Express.js
+
+## Database
+
+- MongoDB
+- Mongoose
+
+## Email Service
+
+- Brevo SMTP API
 
 ---
 
-# 📊 Nutrition Comparison
+# ✅ Conclusion
 
-Users can compare:
+NutriCompare simplifies nutritional comparison by providing an intuitive and visually engaging platform for users to analyze food items side-by-side. With secure authentication, OTP-based password recovery, interactive charts, and a responsive user interface, the application delivers a seamless user experience across devices.
 
-* Vitamin C
-* Antioxidants
-* Protein
-* Fat
-
-Using dynamic bar charts powered by Chart.js.
-
----
-
-# 🔒 Security Features
-
-* Password Hashing
-* Authentication
-* Input Validation
-* OTP Verification
-
----
-
-# 🎨 UI Design
-
-The project uses:
-
-* Animated Gradient Backgrounds
-* Neon Glow Effects
-* Hover Animations
-* Glassmorphism Style
-* Responsive Components
-
----
-
-# 📌 Future Improvements
-
-* Food Search
-* Dark/Light Mode
-* AI-Based Nutrition Suggestions
-* Food Recommendation System
-* Profile Management
-* Upload Images from Device
-
----
-
-# 👨‍💻 Author
-
-Developed by Rambabu.
-
----
-
-# ⭐ Conclusion
-
-NutriCompare is a modern nutrition comparison platform built using full-stack web technologies with authentication and responsive UI.
+The project demonstrates the integration of modern web technologies, data visualization, and user-centered design to make nutritional information more accessible and easier to understand.
