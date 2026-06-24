@@ -31,11 +31,6 @@ NutriCompare is a modern web application that helps users compare the nutritiona
   - Personalized Avatar
   - Secure Sign Out
 
-- 📱 Fully Responsive Design
-  - Desktop Friendly
-  - Tablet Friendly
-  - Mobile Friendly
-
 - 🎨 Premium UI/UX
   - Animated Intro Screen
   - Gradient Effects
