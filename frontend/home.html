@@ -65,7 +65,7 @@ nav{
     0 0 22px rgb(255, 255, 255),
     0 0 22px rgb(255, 255, 255);
      
-    transition: .5s;
+    transition: .4s;
 }
 
 .container{
@@ -80,7 +80,7 @@ nav{
     border-radius:90px;
     cursor:pointer;
  transition:
-        transform 2s cubic-bezier(.22,1,.36,1);
+        transform .4s;
             position: relative;
     
 }
@@ -89,7 +89,7 @@ nav{
     border-radius:0px 0px 20px 20px;
       transform:scale(1.25);  
     background:linear-gradient(360deg,#ff00c8,#00a2ff);
-        animation:3s auto;
+        animation:.4s;
 }
 
 
@@ -144,7 +144,7 @@ font-family: 'Times New Roman', serif;
       cursor:pointer;
       color:white;
       background: linear-gradient(180deg, #ff00c8,#00a2ff);
-      outline: 1.1px solid #ffffff;
+      outline: 1.1px solid rgb(255, 255, 255);
       outline-offset: 1.5px;
       transition:0.2s ease; 
 }
@@ -221,7 +221,7 @@ select option{
         margin-top: 25px;
    display:none;
     max-height:350px;
-    border:0.5px solid rgb(255, 255, 255);
+    border:0.5px solid rgba(0, 0, 0, 0);
 }
 
 #bg{
@@ -243,15 +243,15 @@ select option{
 
 
 .top-avatar{
-    width:60px;
-    height:60px;
+    width:65px;
+    height:65px;
     border-radius:50%;
     display:flex;
     align-items:center;
     justify-content:center;
     font-size:26px;
     font-weight:bold;
-    color:#fff;
+    color:#ffffff;
     background:linear-gradient(
         135deg,
         #ff00c8,
@@ -269,9 +269,9 @@ select option{
     transition:0.3s ease; 
         background:linear-gradient(315deg,#ff00c8,#00a2ff);
       box-shadow:
-    0 0 22px rgb(255, 255, 255),
-    0 0 22px rgb(255, 255, 255),
-    0 0 22px rgb(255, 255, 255);
+    0 0 20px rgb(255, 255, 255),
+    0 0 20px rgb(255, 255, 255),
+    0 0 20px rgb(255, 255, 255);
 }
 
 
@@ -285,14 +285,14 @@ select option{
     background:rgba(255, 255, 255, 0);
     backdrop-filter:blur(10px);
 
-    border-left:1.5px solid rgb(99, 99, 99);
+    border-left:1.5px solid rgba(80, 80, 80, 0.4);
 
-    transition:2.5s ease;
+    transition:2.8s ease;
     z-index:9998;
     display:flex;
     flex-direction:column;
     align-items:center;
-    padding-top:80px;
+    padding-top:100px;
 }
 
 .profile-panel.active{
@@ -303,8 +303,8 @@ select option{
 }
 
 .profile-avatar{
-    width:150px;
-    height:150px;
+    width:155px;
+    height:155px;
 
     border-radius:50%;
 
@@ -332,9 +332,9 @@ background:linear-gradient(315deg,#ff00c8,#00a2ff);
 transform: scale(1.16);
     transition:0.3s ease; 
       box-shadow:
-    0 0 22px rgb(255, 255, 255),
-    0 0 22px rgb(255, 255, 255),
-    0 0 22px rgb(255, 255, 255);
+    0 0 20px rgb(255, 255, 255),
+    0 0 20px rgb(255, 255, 255),
+    0 0 20px rgb(255, 255, 255);
 }
 
 .profile-avatar img{
@@ -355,17 +355,16 @@ transform: scale(1.16);
 
     justify-content:center;
     margin-top:25px;
-    color:#fff;
+    color:rgba(255, 255, 255,.9);
     cursor:pointer;
     font-size:18px;
     width:45%;
     padding:5px;
-    outline: 2px solid rgb(99, 99, 99);
+    outline: 2px solid rgba(255, 255, 255, 0.3);
     outline-offset: 1px;
     background: transparent;
     border-radius:5px;
     cursor:pointer;
-    color:white;
         transition:0.2s ease; 
 
 }
@@ -392,20 +391,7 @@ transform: scale(1.16);
     
 
 }
-.logout-btn:hover{
-      justify-content:center;
-      transform: scale(1.2);
-    border-radius:30px;
-    outline: 2px solid #ff0000;
-    outline-offset: 1px;
-    background: transparent;
-    color: #ff0000;
-    transition:0.2s ease; 
-     box-shadow:
-      0 0 5px rgb(255, 1, 1),
-      0 0 5px rgba(255, 1, 1),
-      0 0 5px rgba(255, 1, 1);
-}
+
 
 .change-photo:active{
             box-shadow:
@@ -415,7 +401,7 @@ transform: scale(1.16);
       transform:scale(1.35);
 }
 
-.change:active,.logout-btn:active{
+.change:active{
             box-shadow:
       0 0 15px rgb(255, 1, 1),
       0 0 15px rgba(255, 1, 1),
@@ -423,18 +409,6 @@ transform: scale(1.16);
       transform:scale(1.35);
 }
 
-.logout-btn{
-    width:65%;
-    margin-top:30px;
-     cursor:pointer;
-    font-size:26px;
-    outline: 1.1px solid #ffffff;
-    outline-offset: 1px;
-    background: transparent;
-    border-radius:10px;
-    cursor:pointer;
-    color:white;
-}
 
 
 #userName{
@@ -475,42 +449,53 @@ transform: scale(1.16);
 
 .logout-track{
     position:relative;
-    width:250px;
-    height:65px;
+    width:265px;
+    height:64px;
     margin-top:50px;
     border-radius:50px;
-    outline:2px solid rgb(129, 129, 129);
+    outline:1.5px solid rgba(255, 255, 255, 0.2);
     overflow:hidden;
+}
+.logout-slider{
+
+    touch-action:none;
+
+    user-select:none;
+
+    -webkit-user-select:none;
+
+    cursor:grab;
+
+    transform:translateX(0);
+    transition:box-shadow .15s ease;
+    will-change:transform;
 }
 
 .logout-slider{
     position:absolute;
+    top: 0;
     left:0;
-    top:0;
     width:65px;
-    height:64.8px;
+    height:65px;
     border-radius:50px;
+    align-items: center;
     cursor:grab;
     display:flex;
     align-items:center;
     justify-content:center;
-    background:linear-gradient(
-        135deg,
-        #ff0099,
-        #0084ff);
+    background:transparent;
+
 }
 
 .logout-slider:hover{
-        
-  background:linear-gradient(315deg,#ff0099,#0084ff);
+    background:transparent;
 
 }
 
 .logout-slider img{
 
-    width:55px;
-    height:55px;
-    right: 5px;
+    width:48px;
+    height:48px;
     pointer-events:none;
     user-select:none;
     -webkit-user-drag:none;
@@ -535,7 +520,7 @@ transform: scale(1.16);
 .logout-box{
     color: #ffffff;
     font-size: 16px;
-    font-weight: 600;
+    font-weight: 700;
     letter-spacing: -0.01em;
     top: 0;
     width:430px;
@@ -550,7 +535,7 @@ transform: scale(1.16);
   backdrop-filter: blur(5px);
   -webkit-backdrop-filter: blur(5px);
 
-    border:2px solid rgb(99, 99, 99);
+    border:1.5px solid rgba(255, 255, 255, 0.18);
 
     text-align:center;
     
@@ -560,8 +545,8 @@ transform: scale(1.16);
 
     opacity:0;
 
-animation: dropCenter 3.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-        transition:1.2s ease; 
+animation: dropCenter 4.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        transition:1s ease; 
 }
 
 .logout-box:hover{
@@ -569,7 +554,7 @@ animation: dropCenter 3.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
     0 0 15px rgb(255, 0, 0),
     0 0 20px rgb(255, 0, 0),
     0 0 25px rgb(255, 0, 0);
-        transition:.8s ease; 
+        transition:.4s ease; 
 }
 
 @keyframes dropCenter{
@@ -625,7 +610,7 @@ animation: dropCenter 3.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
     height: 42px;
     width:125px;
     padding:3px;
-    outline: 2px solid rgb(67, 67, 67);
+    outline: 2px solid rgba(255, 255, 255, 0.2);
     outline-offset: 1px;
     background: transparent;
     border-radius:8px;
@@ -688,14 +673,14 @@ animation: dropCenter 3.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
     left:38.5%;
 
     width:20px;
-    height:267px;
+    height:263.5px;
      border-radius: 0px;
   backdrop-filter: blur(5px);
   -webkit-backdrop-filter: blur(5px);
 
-    border:2px solid rgb(99, 99, 99);
+    border:1.5px solid rgba(255, 255, 255, 0.18);
 
-animation: cableDrop 3.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+animation: cableDrop 3.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 @keyframes cableDrop{
@@ -728,13 +713,13 @@ animation: cableDrop 3.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
     right:38.5%;
 
      width:20px;
-    height:267px;
+    height:263.5px;
  backdrop-filter: blur(5px);
   -webkit-backdrop-filter: blur(5px);
 
-    border:2px solid rgb(99, 99, 99);
+    border:1.5px solid rgba(255, 255, 255, 0.18);
     border-radius: 0px;
-animation: cableDrop1 3.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+animation: cableDrop1 3.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 @keyframes cableDrop1{
@@ -784,213 +769,11 @@ animation: cableDrop1 3.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 #logoutText span{
-    color:white;
+    color:rgba(255, 255, 255, 0.7);
     font-weight:900;
     transition:.2s;
 }
 
-.logout-slider{
-
-    transition:
-    transform .1s ease,
-}
-
-@media (max-width:768px){
-
-    body{
-        padding:10px;
-    }
-
-    nav{
-        width:100%;
-        max-width:100%;
-        font-size:24px;
-        margin-top:10px;
-        border-radius:15px 15px 0 0;
-    }
-
-    nav:hover{
-        border-radius:20px;
-    }
-
-    .container{
-        width:100%;
-        max-width:100%;
-        padding:20px 15px;
-        border-radius:0 0 25px 25px;
-        scale:1;
-    }
-
-    .container:hover{
-        transform:scale(1);
-        border-radius:0 0 25px 25px;
-    }
-
-    .foods{
-        flex-direction:column;
-        gap:25px;
-        margin-bottom:20px;
-    }
-
-    .food-box img{
-        width:180px;
-        height:180px;
-        max-width:180px;
-    }
-
-    .food-box1{
-        margin-bottom:0;
-    }
-
-    .food-box1 span{
-        font-size:30px !important;
-    }
-
-    select{
-        width:100%;
-        font-size:16px;
-        padding:12px;
-    }
-
-    button{
-        width:100%;
-        font-size:18px;
-        padding:12px;
-    }
-
-    .loading-text{
-        font-size:38px;
-    }
-
-    #chart{
-        max-height:280px;
-        margin-top:20px;
-    }
-
-    .result{
-        font-size:24px;
-        margin-top:20px;
-        line-height:1.4;
-    }
-
-    .profile-btn{
-        top:12px;
-        right:12px;
-    }
-
-    .top-avatar{
-        width:50px;
-        height:50px;
-        font-size:20px;
-    }
-
-    .profile-panel{
-        width:260px;
-        right:-260px;
-    }
-
-    .profile-avatar{
-        width:110px;
-        height:110px;
-        font-size:40px;
-    }
-
-    #userName{
-        font-size:22px;
-    }
-
-    #userEmail{
-        font-size:14px;
-        padding:0 10px;
-    }
-
-    .change-photo,
-    .change{
-        width:65%;
-        font-size:15px;
-    }
-
-    .logout-track{
-        width:220px;
-        height:58px;
-    }
-
-    .logout-slider{
-        width:58px;
-        height:58px;
-    }
-
-    .logout-slider img{
-        width:46px;
-        height:46px;
-    }
-
-    .logout-box{
-        width:92%;
-        max-width:360px;
-        padding:25px 15px;
-    }
-
-    .logout-box h2{
-        font-size:22px;
-        line-height:1.4;
-    }
-
-    .logout-actions{
-        gap:20px;
-    }
-
-    .change-photo1,
-    .change1{
-        width:110px;
-        font-size:18px;
-        height:40px;
-    }
-
-    .logout-cable,
-    .logout-cable1{
-        display:none;
-    }
-}
-
-@media (max-width:480px){
-
-    .loading-text{
-        font-size:30px;
-    }
-
-    .food-box img{
-        width:150px;
-        height:150px;
-    }
-
-    select{
-        font-size:15px;
-    }
-
-    button{
-        font-size:16px;
-    }
-
-    .result{
-        font-size:20px;
-    }
-
-    .profile-panel{
-        width:240px;
-        right:-240px;
-    }
-
-    .logout-box h2{
-        font-size:18px;
-    }
-
-    .change-photo1,
-    .change1{
-        width:95px;
-        font-size:16px;
-    }
-}
 
 </style>
 </head>

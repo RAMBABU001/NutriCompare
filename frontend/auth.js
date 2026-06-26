@@ -662,161 +662,133 @@ function logout(){
 
 
 
-const slider =
-document.getElementById(
-    "logoutSlider"
-);
-if(parseInt(slider.style.left || 0) < 10){
+const slider = document.getElementById("logoutSlider");
+const track = document.querySelector(".logout-track");
+const logoutText = document.getElementById("logoutText");
 
-    logoutText.style.color =
-    "#ffffff";
+if (parseInt(slider.style.left || 0) < 10) {
 
-    logoutText.style.textShadow =
-    "none";
+    logoutText.style.color = "#ffffff";
+    logoutText.style.textShadow = "none";
+
 }
 
 let dragging = false;
 let lastX = 0;
 
-slider.addEventListener(
-"mousedown",
-()=>{
+
+slider.style.touchAction = "none";
+
+slider.addEventListener("pointerdown", (e) => {
 
     dragging = true;
+
+    slider.setPointerCapture(e.pointerId);
+
+    slider.style.cursor = "grabbing";
+
 });
 
-document.addEventListener(
-"mouseup",
-()=>{
+document.addEventListener("pointerup", () => {
 
     dragging = false;
 
-    window.getSelection()
-    .removeAllRanges();
+    slider.style.cursor = "grab";
+
+    window.getSelection().removeAllRanges();
+
 });
 
-document.addEventListener(
-"mousemove",
-(e)=>{
+document.addEventListener("pointermove", (e) => {
 
-    if(!dragging) return;
+    if (!dragging) return;
 
-    const track =
-    document.querySelector(
-        ".logout-track"
+    const rect = track.getBoundingClientRect();
+
+    let x = e.clientX - rect.left - slider.offsetWidth / 2;
+
+    x = Math.max(
+        0,
+        Math.min(
+            x,
+            rect.width - slider.offsetWidth
+        )
     );
 
-    const rect =
-    track.getBoundingClientRect();
+    slider.style.left = x + "px";
 
-    let x =
-    e.clientX - rect.left - 30;
+    if (x <= 5) {
 
-x = Math.max(
-    0,
-    Math.min(
-        x,
-        rect.width - slider.offsetWidth
-    )
-);
+        slider.style.boxShadow = "none";
 
-    slider.style.left =
-    x + "px";
+        lastX = 0;
 
-if(x <= 5){
+    } else if (x > lastX) {
 
-    slider.style.boxShadow = "none";
+        slider.style.boxShadow = `
+            32px 0 32px rgb(255,0,0),
+            55px 0 55px rgb(163,0,0)
+        `;
 
-    lastX = 0;
+    } else {
 
-}
-else if(x > lastX){
+        slider.style.boxShadow = `
+            -32px 0 32px rgb(4,255,0),
+            -55px 0 55px rgb(0,137,0)
+        `;
+    }
 
-    slider.style.boxShadow =
-    `
-    
-    32px 0 32px rgb(255, 0, 0),
-    55px 0 55px rgb(163, 0, 0)    `;
+    lastX = x;
 
-}else if(x < lastX){
+    const progress =
+        x /
+        (rect.width - slider.offsetWidth);
 
-    slider.style.boxShadow =
-    `
-    
-    -32px 0 32px rgb(4, 255, 0),
-    -55px 0 55px rgb(0, 137, 0)    `;
-}
+    if (progress < 0.45) {
 
-lastX = x;
+        logoutText.innerHTML = `
+            <span style="color:white;">SIGN</span>
+            <span style="color:white;">OUT</span>`;
 
-const logoutText =
-document.getElementById("logoutText");
+    } else if (progress < 0.80) {
 
-const sliderCenter =
-x + 30;
+        logoutText.innerHTML = `
+            <span style="color:#ff0000;text-shadow:0 0 15px red;">SIGN</span>
+            <span style="color:white;">OUT</span>`;
 
-const textCenter =
-(rect.width / 2);
+    } else {
 
-const progress =
-x / (rect.width - 60);
+        logoutText.innerHTML = `
+            <span style="color:#ff0000;text-shadow:0 0 15px red;">SIGN</span>
+            <span style="color:#ff0000;text-shadow:0 0 15px red;">OUT</span>`;
+    }
 
-if(progress < 0.45){
+    if (
+        x >=
+        rect.width - slider.offsetWidth - 1
+    ) {
 
-    logoutText.innerHTML =
-    `<span style="color:white;">SIGN</span>
-     <span style="color:white;">OUT</span>`;
-
-}else if(progress < 0.80){
-
-    logoutText.innerHTML =
-    `<span style="
-        color:#ff0000;
-        text-shadow:0 0 15px red;
-    ">SIGN</span>
-     <span style="color:white;">OUT</span>`;
-
-}else{
-
-    logoutText.innerHTML =
-    `<span style="
-        color:#ff0000;
-        text-shadow:0 0 15px red;
-    ">SIGN</span>
-     <span style="
-        color:#ff0000;
-        text-shadow:0 0 15px red;
-    ">OUT</span>`;
-}
-
-
-
-if(
-    x >=
-    rect.width - slider.offsetWidth - 1
-){
-
-  document.body.style.overflow = "hidden";
-document.documentElement.style.overflow = "hidden";
-    document
-    .getElementById(
-        "pageContent"
-    )
-    .classList
-    .add("hide-page");
-
-    setTimeout(()=>{
+        document.body.style.overflow = "hidden";
+        document.documentElement.style.overflow = "hidden";
 
         document
-        .getElementById(
-            "logoutModal"
-        )
-        .style.display =
-        "flex";
+            .getElementById("pageContent")
+            .classList
+            .add("hide-page");
 
-    },100);
-}
+        setTimeout(() => {
+
+            document
+                .getElementById("logoutModal")
+                .style.display = "flex";
+
+        }, 120);
+    }
+
 });
+
+
+
 
 function closeLogoutModal(){
 

@@ -70,7 +70,23 @@ subject: "NutriCompare - Password Reset OTP",
 
 textContent: "Use this OTP to securely reset your password.",
 
+
 htmlContent: `
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light">
+<meta name="supported-color-schemes" content="light">
+</head>
+
+<body style="
+    margin:0;
+    padding:0;
+    background:#000000;
+">
+
 <div style="
     background:linear-gradient(
         180deg,
@@ -153,7 +169,7 @@ htmlContent: `
                 text-align:center;
                 line-height:1;
                 width:100%;
-                ">
+            ">
                 ${savedOTP}
             </span>
 
@@ -176,7 +192,12 @@ htmlContent: `
 
     </div>
 </div>
+
+</body>
+</html>
 `
+
+
       },
 
       {
