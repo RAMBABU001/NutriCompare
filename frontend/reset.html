@@ -338,6 +338,27 @@ input::placeholder {
     align-items: center;
 }
  
+@media screen and (max-width: 768px) {
+    .container {
+        width: 90% !important;
+        max-width: none !important;  
+        transform: scale(.82) !important;
+        padding: 30px 20px !important;
+        margin: auto !important; 
+    }
+    
+    .container:hover {
+        transform: scale(1) !important;
+    }
+
+    input:focus, 
+    button:hover, 
+    button:active, 
+    .forgot-text:hover, 
+    .forgot-text:active {
+        transform: scale(1.02) !important; 
+    }
+}
 
   </style>
 </head>

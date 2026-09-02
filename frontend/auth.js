@@ -292,177 +292,246 @@ if(password !== confirmPassword){
   }
 }
 
+let foods = {
+  // Fruits
+  Orange:{protein:0.9,fat:0.1,fiber:2.4,carbs:11.8,calcium:40,calories:47,sugar:9.0,iron:0.1, img:"https://png.pngtree.com/png-clipart/20240404/original/pngtree-fresh-single-orange-fruit-isolated-on-transparent-background-png-image_14754004.png"},
+  Apple:{protein:0.3,fat:0.2,fiber:2.4,carbs:13.8,calcium:6,calories:52,sugar:10.4,iron:0.1, img:"https://png.pngtree.com/png-clipart/20230414/original/pngtree-red-apple-organic-fruit-food-transparent-png-image_9057111.png"},
+  Banana:{protein:1.1,fat:0.3,fiber:2.6,carbs:22.8,calcium:5,calories:89,sugar:12.2,iron:0.3, img:"https://png.pngtree.com/png-clipart/20220726/original/pngtree-banana-yellow-banana-skewers-three-fruits-png-image_8413323.png"},
+  Watermelon:{protein:0.6,fat:0.2,fiber:0.4,carbs:7.6,calcium:7,calories:30,sugar:6.2,iron:0.2, img:"https://png.pngtree.com/png-clipart/20250122/original/pngtree-watermelon-transparent-background-png-image_19730741.png"},
+  Grapes:{protein:0.7,fat:0.2,fiber:0.9,carbs:18.1,calcium:10,calories:69,sugar:15.5,iron:0.4, img:"https://png.pngtree.com/png-clipart/20250501/original/pngtree-a-beautiful-bunch-of-red-grapes-fruit-png-image_20926122.png"},
+  Mango:{protein:0.8,fat:0.4,fiber:1.6,carbs:15.0,calcium:11,calories:60,sugar:13.7,iron:0.2, img:"https://png.pngtree.com/png-clipart/20250305/original/pngtree-ripe-mango-fruit-with-leaf-for-healthy-snack-png-image_20574942.png"},
+  Strawberries:{protein:0.7,fat:0.3,fiber:2.0,carbs:7.7,calcium:16,calories:32,sugar:4.9,iron:0.4, img:"https://png.pngtree.com/png-clipart/20240610/original/pngtree-strawberry-fruit-juice-isolated-on-transparent-background-png-image_15298010.png"},
+  Blueberries:{protein:0.7,fat:0.3,fiber:2.4,carbs:14.5,calcium:6,calories:57,sugar:10.0,iron:0.3, img:"https://png.pngtree.com/png-clipart/20240925/original/pngtree-blueberries-on-transparent-background-png-image_16088931.png"},
+  Papaya:{protein:0.5,fat:0.1,fiber:1.7,carbs:11.0,calcium:20,calories:43,sugar:7.8,iron:0.3, img:"https://png.pngtree.com/png-vector/20260902/ourmid/pngtree-half-papaya-fruit-with-seeds-on-transparent-background-png-image_20050784.webp"},
+  Avocado:{protein:2.0,fat:15.0,fiber:7.0,carbs:9.0,calcium:12,calories:160,sugar:0.7,iron:0.6, img:"https://png.pngtree.com/png-clipart/20250102/original/pngtree-a-photo-of-whole-avocado-and-halved-with-the-seed-png-image_18633600.png"},
+  // Vegetables
+  Spinach:{protein:2.9,fat:0.4,fiber:2.2,carbs:3.6,calcium:99,calories:23,sugar:0.4,iron:2.7, img:"https://png.pngtree.com/png-clipart/20250415/original/pngtree-fresh-spinach-leaves-isolated-on-a-transparent-background-png-image_20738157.png"},
+  Carrot:{protein:0.9,fat:0.2,fiber:2.8,carbs:9.6,calcium:33,calories:41,sugar:4.7,iron:0.3, img:"https://png.pngtree.com/png-clipart/20241221/original/pngtree-single-fresh-orange-carrot-vegetable-png-image_18122767.png"},
+  Broccoli:{protein:2.8,fat:0.4,fiber:2.6,carbs:6.6,calcium:47,calories:34,sugar:1.7,iron:0.7, img:"https://png.pngtree.com/png-vector/20251108/ourmid/pngtree-a-fresh-vibrant-green-head-of-broccoli-with-thick-stalk-shown-png-image_17917971.webp"},
+  SweetPotato:{protein:1.6,fat:0.1,fiber:3.0,carbs:20.1,calcium:30,calories:86,sugar:4.2,iron:0.6, img:"https://png.pngtree.com/png-clipart/20250417/original/pngtree-realistic-sweet-potatoes-whole-and-sliced-png-image_20774629.png"},
+  Tomato:{protein:0.9,fat:0.2,fiber:1.2,carbs:3.9,calcium:10,calories:18,sugar:2.6,iron:0.3, img:"https://png.pngtree.com/png-clipart/20250222/original/pngtree-realistic-sliced-tomato-with-transparent-background-png-image_20493422.png"},
+  Cucumber:{protein:0.6,fat:0.1,fiber:0.5,carbs:3.6,calcium:16,calories:15,sugar:1.7,iron:0.3, img:"https://png.pngtree.com/png-clipart/20240322/original/pngtree-fresh-cucumber-isolated-freshness-vegetable-harvest-and-ingredients-for-cooking-food-png-image_14653724.png"},
+  Mushroom:{protein:3.1,fat:0.3,fiber:1.0,carbs:3.3,calcium:3,calories:22,sugar:2.0,iron:0.5, img:"https://png.pngtree.com/png-clipart/20240612/original/pngtree-isolated-oyster-mushroom-cutout-on-transparent-background-png-image_15311254.png"},
+  // NonVeg
+  Fish:{protein:22.0,fat:12.0,fiber:0.0,carbs:0.0,calcium:15,calories:206,sugar:0.0,iron:0.3, img:"https://png.pngtree.com/png-clipart/20241119/original/pngtree-tilapia-fish-4k-transparent-background-png-image_17267081.png"},
+  Chicken:{protein:27.0,fat:14.0,fiber:0.0,carbs:0.0,calcium:15,calories:239,sugar:0.0,iron:1.3, img:"https://png.pngtree.com/png-clipart/20250102/original/pngtree-golden-fried-chicken-legs-perfect-for-snack-and-food-photography-png-image_19841682.png"},
+  Meat:{protein:26.0,fat:15.0,fiber:0.0,carbs:0.0,calcium:18,calories:250,sugar:0.0,iron:2.6, img:"https://png.pngtree.com/png-clipart/20250515/original/pngtree-a-juicy-raw-beef-steak-meat-completely-fresh-natural-colour-png-image_20985537.png"},
+  Prawns:{protein:24.0,fat:0.3,fiber:0.0,carbs:0.2,calcium:70,calories:99,sugar:0.0,iron:0.5, img:"https://png.pngtree.com/png-clipart/20250601/original/pngtree-cooked-prawns-bright-orange-pink-transparent-background-png-image_21105431.png"},
+  Egg:{protein:13.0,fat:11.0,fiber:0.0,carbs:1.1,calcium:56,calories:155,sugar:1.1,iron:1.2, img:"https://png.pngtree.com/png-clipart/20250606/original/pngtree-chicken-eggs-isolated-on-transparent-background-png-image_21133536.png"},
+  Salmon:{protein:20.0,fat:13.0,fiber:0.0,carbs:0.0,calcium:9,calories:208,sugar:0.0,iron:0.3, img:"https://png.pngtree.com/png-vector/20260902/ourmid/pngtree-grilled-salmon-fillets-isolated-on-transparent-background-png-image_20076206.webp"},
+  // DairyAndProtein
+  Almonds:{protein:21.2,fat:49.9,fiber:12.5,carbs:21.6,calcium:269,calories:579,sugar:4.4,iron:3.7, img:"https://png.pngtree.com/png-clipart/20250416/original/pngtree-almonds-and-chocolate-covered-nuts-pile-isolated-on-transparent-background-png-image_20699673.png"},
+  Milk:{protein:3.4,fat:3.3,fiber:0.0,carbs:5.0,calcium:113,calories:42,sugar:5.0,iron:0.0, img:"https://png.pngtree.com/png-clipart/20250108/original/pngtree-glass-of-milk-with-splash-isolated-on-transparent-or-white-background-png-image_20116630.png"},
+  Cheese:{protein:25.0,fat:33.0,fiber:0.0,carbs:1.3,calcium:721,calories:402,sugar:0.5,iron:0.7, img:"https://png.pngtree.com/png-clipart/20250430/original/pngtree-wedge-of-swiss-cheese-classic-holey-emmental-png-image_20905450.png"},
+  PeanutButter:{protein:25.0,fat:50.0,fiber:6.0,carbs:20.0,calcium:43,calories:588,sugar:9.9,iron:1.9, img:"https://png.pngtree.com/png-clipart/20241108/original/pngtree-jar-of-peanut-chocolate-butter-on-transparent-background-png-image_16774769.png"},
+  Paneer:{protein:18.0,fat:20.0,fiber:0.0,carbs:1.2,calcium:208,calories:296,sugar:2.6,iron:0.1, img:"https://png.pngtree.com/png-clipart/20250612/original/pngtree-realistic-diced-paneer-cubes-for-indian-recipes-png-image_21185956.png"},
+  Tofu:{protein:8.0,fat:4.8,fiber:1.2,carbs:1.9,calcium:350,calories:76,sugar:0.6,iron:5.4, img:"https://png.pngtree.com/png-clipart/20240907/original/pngtree-cubes-of-raw-tofu-on-transparent-background-png-image_15958430.png"},
+  Yogurt:{protein:10.0,fat:0.4,fiber:0.0,carbs:3.6,calcium:110,calories:59,sugar:3.2,iron:0.1, img:"https://png.pngtree.com/png-clipart/20250118/original/pngtree-a-bowl-of-greek-yogurt-with-fresh-berries-on-transparent-background-png-image_20059698.png"},
+  Walnuts:{protein:15.0,fat:65.0,fiber:7.0,carbs:14.0,calcium:98,calories:654,sugar:2.6,iron:2.9, img:"https://png.pngtree.com/png-clipart/20250202/original/pngtree-walnuts-isolated-on-transparent-background-png-image_20348998.png"},
+  // GrainsAndStaples
+  Oats:{protein:16.9,fat:6.9,fiber:10.6,carbs:66.3,calcium:54,calories:389,sugar:0.0,iron:4.7, img:"https://png.pngtree.com/png-clipart/20231024/original/pngtree-oats-flakes-pile-on-white-background-lifestyle-photo-png-image_13416114.png"},
+  Rice:{protein:2.7,fat:0.3,fiber:0.4,carbs:28.0,calcium:10,calories:130,sugar:0.1,iron:0.2, img:"https://png.pngtree.com/png-clipart/20250501/original/pngtree-dry-white-long-rice-basmati-in-wooden-bowl-isolated-on-transparent-png-image_20918117.png"},
+  Bread:{protein:9.0,fat:3.2,fiber:2.7,carbs:49.0,calcium:144,calories:265,sugar:5.0,iron:3.6, img:"https://png.pngtree.com/png-clipart/20250130/original/pngtree-white-bread-loaf-with-three-slices-png-image_20313466.png"},
+  Quinoa:{protein:4.4,fat:1.9,fiber:2.8,carbs:21.3,calcium:17,calories:120,sugar:0.9,iron:1.5, img:"https://png.pngtree.com/png-clipart/20250416/original/pngtree-quinoa-in-a-white-bowl-isolated-on-transparent-background-png-image_20699441.png"},
+  Dal:{protein:9.0,fat:0.4,fiber:8.0,carbs:20.0,calcium:19,calories:116,sugar:1.0,iron:3.3, img:"https://png.pngtree.com/png-clipart/20240901/original/pngtree-create-an-8k-3d-high-definition-image-of-a-traditional-bowl-png-image_15906131.png"},
+  // FastFoodAndDesserts
+  Burger:{protein:17.0,fat:15.0,fiber:1.5,carbs:30.0,calcium:100,calories:295,sugar:5.0,iron:2.5, img:"https://png.pngtree.com/png-clipart/20241101/original/pngtree-crispy-cheesy-chicken-patty-burger-on-transparent-background-png-image_16578920.png"},
+  Pizza:{protein:11.0,fat:10.0,fiber:2.3,carbs:33.0,calcium:188,calories:266,sugar:3.6,iron:2.5, img:"https://png.pngtree.com/png-clipart/20250415/original/pngtree-picture-of-whole-pizza-hd-transparent-background-png-image_20810524.png"},
+  Chips:{protein:6.0,fat:35.0,fiber:4.8,carbs:53.0,calcium:24,calories:536,sugar:0.3,iron:1.6, img:"https://png.pngtree.com/png-clipart/20240718/original/pngtree-a-bowl-of-potato-chips-on-transparent-background-png-image_15582709.png"},
+  FrenchFries:{protein:3.4,fat:15.0,fiber:3.8,carbs:41.0,calcium:18,calories:312,sugar:0.3,iron:0.8, img:"https://png.pngtree.com/png-clipart/20250429/original/pngtree-hot-and-crispy-french-fries-in-red-box-png-image_20891964.png"},
+  Soda:{protein:0.0,fat:0.0,fiber:0.0,carbs:10.6,calcium:2,calories:41,sugar:10.6,iron:0.1, img:"https://png.pngtree.com/png-clipart/20240813/original/pngtree-orange-soda-in-a-clear-glass-with-bubbles-isolated-on-transparent-png-image_15762929.png"},
+  IceCream:{protein:3.5,fat:11.0,fiber:0.0,carbs:24.0,calcium:128,calories:207,sugar:21.0,iron:0.1, img:"https://png.pngtree.com/png-clipart/20241216/original/pngtree-3d-vanilla-icecream-ice-cream-cone-on-transparent-background-png-image_17919357.png"},
+  Chocolate:{protein:4.9,fat:30.0,fiber:7.0,carbs:61.0,calcium:56,calories:546,sugar:48.0,iron:8.0, img:"https://png.pngtree.com/png-clipart/20241223/original/pngtree-chocolate-bar-with-splash-on-a-transparent-background-png-image_18138025.png"},
+  Donut:{protein:4.9,fat:25.0,fiber:1.5,carbs:51.0,calcium:21,calories:452,sugar:27.0,iron:2.1, img:"https://png.pngtree.com/png-clipart/20240811/original/pngtree-donut-with-pink-icing-isolated-on-transparent-background-png-image_15750982.png"},
+};
 
-
-
-
-
- let foods = {
-      Orange:{protein:0.9,fat:0.1,fiber:2.4,carbs:11.8,calcium:40, img:"https://tse4.mm.bing.net/th/id/OIP._fpL6Wo5uc-yHoUrkQEB8gHaFj?pid=Api&h=220&P=0"},
-      Almonds:{protein:21.2,fat:49.9,fiber:12.5,carbs:21.6,calcium:269, img:"https://tse2.mm.bing.net/th/id/OIP.S9Cqtt2_Vt3ocdmTyoIr-wHaEw?pid=Api&h=220&P=0"},
-      Burger:{protein:17.0,fat:15.0,fiber:1.5,carbs:30.0,calcium:100, img:"https://tse3.mm.bing.net/th/id/OIP.Oj9ppaRfiy0FICs7w-pTtQHaHa?pid=Api&h=220&P=0"},
-      Spinach:{protein:2.9,fat:0.4,fiber:2.2,carbs:3.6,calcium:99, img:"https://tse4.mm.bing.net/th/id/OIP.C_YfNbtMM86ry2u3tfihFwHaFj?pid=Api&h=220&P=0"},
-      Apple:{protein:0.3,fat:0.2,fiber:2.4,carbs:13.8,calcium:6, img:"https://www.collinsdictionary.com/images/full/apple_158989157.jpg"},
-      Carrot:{protein:0.9,fat:0.2,fiber:2.8,carbs:9.6,calcium:33, img:"https://tse3.mm.bing.net/th/id/OIP.tr38uLM7QBOLElGJHG88eQHaEi?pid=Api&h=220&P=0"},
-      Pizza:{protein:11.0,fat:10.0,fiber:2.3,carbs:33.0,calcium:188, img:"https://tse3.mm.bing.net/th/id/OIP.8UeIFPMYwIErE1ShRYB9QAHaEo?pid=Api&h=220&P=0"},
-      Broccoli:{protein:2.8,fat:0.4,fiber:2.6,carbs:6.6,calcium:47, img:"https://tse2.mm.bing.net/th/id/OIP.3k8082immh_-bfqWvkc7KgHaEm?pid=Api&h=220&P=0"},
-      Chips:{protein:6.0,fat:35.0,fiber:4.8,carbs:53.0,calcium:24, img:"https://tse2.mm.bing.net/th/id/OIP.qkms5akLjvVAq-R2sv9hkgHaFj?pid=Api&h=220&P=0"},
-      Banana:{protein:1.1,fat:0.3,fiber:2.6,carbs:22.8,calcium:5, img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQG7ElBNPs-HbYJJOMHRu7lEmphTn8-52FYKw&s"},
-      Milk:{protein:3.4,fat:3.3,fiber:0.0,carbs:5.0,calcium:113, img:"https://cdn.britannica.com/77/200377-050-4326767F/milk-splashing-glass.jpg"},
-      Fish:{protein:22.0,fat:12.0,fiber:0.0,carbs:0.0,calcium:15, img:"https://continentalfresh.in/cdn/shop/products/IMG-4902.jpg?v=1612248584"},
-      Chicken:{protein:27.0,fat:14.0,fiber:0.0,carbs:0.0,calcium:15, img:"https://www.datocms-assets.com/129288/1734105343-homepage_header.png?auto=format&w=2400&h=1567&fit=crop"},
-      Meat:{protein:26.0,fat:15.0,fiber:0.0,carbs:0.0,calcium:18, img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTiWAysLL2VkMYpSvzcYgFP5-6MxW1ur9z15g&s"},
-      Prawns:{protein:24.0,fat:0.3,fiber:0.0,carbs:0.2,calcium:70, img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRGN3_6txDuPkb95ppOB8OLshBEtUy8BSHoPqBo71RkZg&s=10"},
-      Egg:{protein:13.0,fat:11.0,fiber:0.0,carbs:1.1,calcium:56, img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQfiO7agvs5Xg3uKg-u0FIahDpYwib8Fj6giA&s"},
-      Cheese:{protein:25.0,fat:33.0,fiber:0.0,carbs:1.3,calcium:721, img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTJ8-CCk_Xk2_JubFk84m1PbDg4efSQ83bfXg&s"},
-      PeanutButter:{protein:25.0,fat:50.0,fiber:6.0,carbs:20.0,calcium:43, img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRP6tQv4YikqrVtWf6JjSLS5Q3Os-oBV9bFZg&s"},
-      IceCream:{protein:3.5,fat:11.0,fiber:0.0,carbs:24.0,calcium:128, img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT532QISWGuf9bHX5Jv333T-bE5tAJTwx6ouQ&s"},
-      Watermelon:{protein:0.6,fat:0.2,fiber:0.4,carbs:7.6,calcium:7, img:"https://upload.wikimedia.org/wikipedia/commons/thumb/c/cc/Watermelon_seedless.jpg/250px-Watermelon_seedless.jpg"},
-      Grapes:{protein:0.7,fat:0.2,fiber:0.9,carbs:18.1,calcium:10, img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQczLLEOk49Pm-VqWD5euheDp8PbdF2FSoyYQ&s"},
-      Mango:{protein:0.8,fat:0.4,fiber:1.6,carbs:15.0,calcium:11, img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ4fYh6jkcSKf2g3fxRoDBtHDOqbBwob9A1oQ&s"},
-      Oats:{protein:16.9,fat:6.9,fiber:10.6,carbs:66.3,calcium:54, img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSbWiQ4mListxf41ajEPM7LLcJu4bLRxOUYQg&s"},
-      Rice:{protein:2.7,fat:0.3,fiber:0.4,carbs:28.0,calcium:10, img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_a2EsuSBF1V-B3dr6I-t3pDzcsdIpVu_vGw&s"},
-      Bread:{protein:9.0,fat:3.2,fiber:2.7,carbs:49.0,calcium:144, img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTgVuo_sYN__UzUkBoVI4C_21Fy8IOqEcPldA&s"}
-    };
-
-   async function populateFoods(){
-
+async function populateFoods(){
   try{
-
     await loadFoodsFromDB();
-
   }catch(error){
-
     console.log("DB Load Failed");
   }
 
   Object.keys(foods).forEach(f => {
-
     const opt1 = document.createElement("option");
     opt1.value = f;
     opt1.text = f;
-
     const opt2 = document.createElement("option");
     opt2.value = f;
     opt2.text = f;
-
     food1.appendChild(opt1);
     food2.appendChild(opt2);
   });
 }
-
 populateFoods();
-    let chart;
-    function updateChart() {
-      if (!food1.value || !food2.value) {
-        alert("⚠️Please select both food items!");
-        return;
-      }
-      img1.src = foods[food1.value].img;
-      img2.src = foods[food2.value].img;
 
-      const data = {
-        labels: ["Protein (g)", "Fat (g)", "Fiber (g)", "Carbs (g)", "Calcium (mg/10)"],
-        datasets: [
-          {
-            label: food1.value,
-            data: [
-  foods[food1.value].protein,
-  foods[food1.value].fat,
-  foods[food1.value].fiber,
-  foods[food1.value].carbs,
-  foods[food1.value].calcium / 10
-],
-            backgroundColor: "rgb(0, 221, 255)",
-            hoverBackgroundColor: "rgba(0, 162, 255, 1)"
-          },
-          {
-            label: food2.value,
-            data: [
-  foods[food2.value].protein,
-  foods[food2.value].fat,
-  foods[food2.value].fiber,
-  foods[food2.value].carbs,
-  foods[food2.value].calcium / 10
-],
-            backgroundColor: "rgb(255, 0, 136)",
-            hoverBackgroundColor: "rgb(255, 0, 170)"
-          }
-        ]
-      };
+let chart;
+let recommendationTimer;
 
-      if (chart) chart.destroy();
-      chart = new Chart(document.getElementById("chart"), {
-        type: "bar",
-        data: data,
-       options: {
-  responsive: true,
-  plugins: {
-    legend: {
-      position: "top",
-      labels: {
-        color: "white",
-        font: {
-        family: "Inter, sans-serif",
-        size: 16,
-        },
-        boxWidth: 35,
-        boxHeight: 4,
-        padding: 20
-      }
-    },
-    tooltip: {
-      enabled: true
-    }
-  },
-  scales: {
-    x: {
-      ticks: {
-          autoSkip: false,
-        maxRotation: 0,
-        minRotation: 0,
-        color: "white",
-        font: {
-          size: 15,
-          weight: "bold"
-        }
-      }
-    },
-    y: {
-      beginAtZero: true,
-      ticks: {
-        color: "white",
-        font: {
-          size: 15,
-          weight: "bold"
-        }
-      }
-    }
+function revealFoodImage(imageElement, imageUrl) {
+  imageElement.classList.remove("food-image-reveal");
+  imageElement.classList.add("food-image-loading");
+
+  const preload = new Image();
+  const reveal = () => {
+    imageElement.src = imageUrl;
+    requestAnimationFrame(() => {
+      imageElement.classList.remove("food-image-loading");
+      imageElement.classList.add("food-image-reveal");
+    });
+  };
+
+  preload.onload = reveal;
+  preload.onerror = reveal;
+  preload.src = imageUrl;
+}
+
+function updateChart() {
+  if (!food1.value || !food2.value) {
+    alert("⚠️Please select both food items!");
+    return;
   }
-}
-});
-      const score1 =
-foods[food1.value].protein +
-foods[food1.value].fiber +
-(foods[food1.value].calcium / 10) -
-foods[food1.value].fat;      
-      const score2 =
-foods[food2.value].protein +
-foods[food2.value].fiber +
-(foods[food2.value].calcium / 10) -
-foods[food2.value].fat;
-      const best = score1 > score2 ? food1.value : food2.value;
-const other = score1 > score2 ? food2.value : food1.value;
+  document.body.classList.add("comparison-active");
+  revealFoodImage(document.getElementById("img1"), foods[food1.value].img);
+  revealFoodImage(document.getElementById("img2"), foods[food2.value].img);
 
-resultText.style.display = "block";
-resultText.innerHTML =
-  "<span style='font-family:\"Times New Roman\",serif;color:white;'>" +
-  "<img src='graph.gif' style='width:32px;height:32px;border-radius:10px;vertical-align:-1px;'>" +
-  " Recommended food:" + best +
-  "</span>" +
-  "<img src='tickk.gif' style='width:48px;height:48px;vertical-align:-10px'>";
-}
+  const data = {
+    labels: [
+      ["Protein", "(g)"], 
+      ["Fat", "(g)"], 
+      ["Fiber", "(g)"], 
+      ["Carbs", "(g)"], 
+      ["Calcium", "(mg/10)"],
+      ["Calories", "(kcal/10)"], 
+      ["Sugar", "(g)"], 
+      ["Iron", "(mg)"]
+    ],
+    datasets: [
+      {
+        label: food1.value,
+        data: [
+          foods[food1.value].protein,
+          foods[food1.value].fat,
+          foods[food1.value].fiber,
+          foods[food1.value].carbs,
+          foods[food1.value].calcium / 10,
+          foods[food1.value].calories / 10,
+          foods[food1.value].sugar,
+          foods[food1.value].iron
+        ],
+        backgroundColor: "rgb(0, 221, 255)",
+        hoverBackgroundColor: "rgba(0, 162, 255, 1)"
+      },
+      {
+        label: food2.value,
+        data: [
+          foods[food2.value].protein,
+          foods[food2.value].fat,
+          foods[food2.value].fiber,
+          foods[food2.value].carbs,
+          foods[food2.value].calcium / 10,
+          foods[food2.value].calories / 10,
+          foods[food2.value].sugar,
+          foods[food2.value].iron
+        ],
+        backgroundColor: "rgb(255, 0, 136)",
+        hoverBackgroundColor: "rgb(255, 0, 170)"
+      }
+    ]
+  };
 
+  const chartCanvas = document.getElementById("chart");
+  const compactChart = window.innerWidth < 768;
+  if (chart) chart.destroy();
+  chartCanvas.style.display = "block";
+  chartCanvas.classList.remove("chart-reveal");
+  void chartCanvas.offsetWidth;
+  chartCanvas.classList.add("chart-reveal");
+
+  chart = new Chart(chartCanvas, {
+    type: "bar",
+    data: data,
+   options: {
+      responsive: true,
+     maintainAspectRatio: true, 
+      aspectRatio: window.innerWidth < 768 ? 1.1 : 2.2,
+      animation: {
+        duration: 4200,
+        easing: 'easeOutQuart'
+      },
+      animations: {
+        y: {
+          from: 0,
+          duration: 4350,
+          easing: 'easeOutQuart',
+          delay(context) {
+            return context.type === 'data'
+              ? context.dataIndex * 120 + context.datasetIndex * 150
+              : 0;
+          }
+        },
+        opacity: {
+          from: 0,
+          duration: 360,
+          easing: 'linear'
+        }
+      },
+      plugins: {
+        legend: {
+          position: "top",
+          labels: {
+            color: "white",
+            font: { family: "Inter, sans-serif", size: compactChart ? 11 : 16 },
+            boxWidth: compactChart ? 20 : 35,
+            boxHeight: compactChart ? 3 : 4,
+            padding: compactChart ? 8 : 20
+          }
+        },
+        tooltip: { enabled: true }
+      },
+      scales: {
+        x: {
+          ticks: {
+            autoSkip: false, 
+            maxRotation: window.innerWidth < 768 ? 45 : 0, 
+            minRotation: window.innerWidth < 768 ? 45 : 0, 
+            color: "white",
+            font: { size: window.innerWidth < 768 ? 10 : 14, family: "'Inter', sans-serif", weight: "bold" }
+          }
+        },
+        y: {
+          beginAtZero: true,
+          ticks: { color: "white", font: { size: 15, family: "'Inter', sans-serif", weight: "bold" } }
+        }
+      }
+    }
+  });
+
+  const f1 = foods[food1.value];
+  const f2 = foods[food2.value];
+
+  const score1 = (f1.protein + f1.fiber + (f1.calcium/20) + f1.iron) / (Math.max(f1.fat, 0.5) + (f1.carbs*0.1) + (f1.sugar*0.5) + (f1.calories/200));
+  const score2 = (f2.protein + f2.fiber + (f2.calcium/20) + f2.iron) / (Math.max(f2.fat, 0.5) + (f2.carbs*0.1) + (f2.sugar*0.5) + (f2.calories/200));
+
+  const best = score1 >= score2 ? food1.value : food2.value;
+
+  clearTimeout(recommendationTimer);
+  resultText.style.display = "none";
+  resultText.classList.remove("live-pop");
+
+  // Bars finish their live growth first, then the recommendation enters smoothly.
+  recommendationTimer = setTimeout(() => {
+    resultText.style.display = "block";
+    resultText.innerHTML =
+      "<span style='font-family:\"Times New Roman\",serif;color:white;'>" +
+      "<img src='graph.gif' style='width:32px;height:32px;border-radius:10px;vertical-align:-1px;'>" +
+      " Recommended food: " + best +
+      "</span>" +
+      "<img src='tickk.gif' style='width:48px;height:48px;vertical-align:-10px'>";
+    void resultText.offsetWidth;
+    resultText.classList.add("live-pop");
+  }, 5500);
+}
 
 const bgCanvas = document.getElementById("bg");
 const bgCtx = bgCanvas.getContext("2d");
